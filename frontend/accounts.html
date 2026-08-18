@@ -67,7 +67,32 @@
                         <button type="button" id="closeModal">Cancel</button>
                     </form>
                 </div>
-                <table>
+                <div class="account-details-modal">
+                    <div class="account-details">
+                        <h2>Account Details</h2>
+                        <div class="detail">
+                            <span>Account Name</span>
+                            <p id="detail-name"></p>
+                        </div>
+                        <div class="detail">
+                            <span>Account Type</span>
+                            <p id="detail-type"></p>
+                        </div>
+                        <div class="detail">
+                            <span>Currency</span>
+                            <p id="detail-currency"></p>
+                        </div>
+                        <div class="detail">
+                            <span>Balance</span>
+                            <p id="detail-balance"></p>
+                        </div>
+                        <div class="modalButtons">
+                            <button id="closeDetails">Close</button>
+                            <button id="editAccount">Edit Account</button>
+                        </div>
+                    </div>
+                </div>
+                <table class="accounts-table">
                     <thead>
                         <tr>
                             <th>Account</th>

@@ -236,3 +236,80 @@ tbody tr
     -webkit-appearance: none;
     margin: 0;
 }
+.account-details-modal
+{
+    display: none;
+}
+.account-details-modal.hidden
+{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(10, 5, 15, 0.65);
+}
+.account-details
+{
+    border: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgb(45, 30, 62);
+    border-color: rgb(65, 45, 80);
+    width: 500px;
+    height: auto;
+    padding: 50px;
+    text-align: left;
+}
+.detail
+{
+    margin-bottom: 18px;
+}
+.detail span
+{
+    color: rgb(160, 150, 175);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.detail p
+{
+    color: rgb(235, 230, 245);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 5px 0 0;
+}
+#detail-balance
+{
+    font-size: 24px;
+    font-weight: 700;
+}
+.modalButtons
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modalButtons button
+{
+    padding: 10px 18px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+}
+#closeDetails
+{
+    background-color: transparent;
+    color: rgb(180, 170, 190);
+    border: 1px solid rgb(65, 45, 80);
+}
+#closeDetails:hover
+{
+    background-color: rgb(57, 32, 80);
+    color: white;
+}
