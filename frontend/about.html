@@ -2,10 +2,37 @@
 <html>
     <head>
         <title>About</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/lucide@latest"></script>
     </head>
     <body>
+        <nav class="sidebar">
+            <button id="menuButton">☰</button>
+            <a href="main.html">
+                <i data-lucide="house"></i>
+                Home
+            </a>
+            <a href="accounts.html">
+                <i data-lucide="wallet"></i>
+                Accounts
+            </a>
+            <a href="transactions.html">
+                <i data-lucide="arrow-left-right"></i>
+                Transactions
+            </a>
+            <a href="about.html">
+                <i data-lucide="info"></i>
+                About
+            </a>
+        </nav>
+        <main id="maincontent">
         <h1>About Project MM</h1>
         <p>Project MM is my personal money management system, built to help me understand and control my own finances. I created it as both a practical tool for managing my income, expenses, accounts, and goals, and as a programming project where I can build something useful from the ground up. Every part of Project MM is designed around the way I want to manage my money and the way I want the system to grow over time.</p>
         <footer>This paragraph was written by ChatGPT for Mohamed's Project MM.</footer>
+        </main>
+        <script src="script.js"></script>
+        <script>
+            lucide.createIcons();
+        </script>
     </body>
 </html>

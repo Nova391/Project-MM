@@ -3,17 +3,30 @@
     <head>
         <title>Project MM F1</title>
         <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/lucide@latest"></script>
     </head>
 
     <body>
         <nav class="sidebar">
             <button id="menuButton">☰</button>
-            <a href="main.html">Home</a>
-            <a href="accounts.html">Accounts</a>
-            <a href="transactions.html">Transactions</a>
-            <a href="about.html">About</a>
+            <a href="main.html">
+                <i data-lucide="house"></i>
+                Home
+            </a>
+            <a href="accounts.html">
+                <i data-lucide="wallet"></i>
+                Accounts
+            </a>
+            <a href="transactions.html">
+                <i data-lucide="arrow-left-right"></i>
+                Transactions
+            </a>
+            <a href="about.html">
+                <i data-lucide="info"></i>
+                About
+            </a>
         </nav>
-        <main>
+        <main id="maincontent">
             <h1>Your personal Money Manager</h1>
             <section>
                 <h2>Welcome back, Sir</h2>
@@ -37,5 +50,8 @@
             <footer>Money Manager</footer>
         </main>
         <script src="script.js"></script>
+        <script>
+            lucide.createIcons();
+        </script>
     </body>
 </html>

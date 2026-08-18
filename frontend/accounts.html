@@ -2,26 +2,113 @@
 <html>
     <head>
         <title>Accounts</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/lucide@latest"></script>
     </head>
     <body>
-        <main>
+        <nav class="sidebar">
+            <button id="menuButton">☰</button>
+            <a href="main.html">
+                <i data-lucide="house"></i>
+                Home
+            </a>
+            <a href="accounts.html">
+                <i data-lucide="wallet"></i>
+                Accounts
+            </a>
+            <a href="transactions.html">
+                <i data-lucide="arrow-left-right"></i>
+                Transactions
+            </a>
+            <a href="about.html">
+                <i data-lucide="info"></i>
+                About
+            </a>
+        </nav>
+        <main id="maincontent">
             <section>
-                <h2>My Accounts</h2>
-                <ul>
-                    <li>Bank</li>
-                    <li>Cash</li>
-                    <li>Savings</li>
-                    <li>PayPal</li>
-                </ul>
+                <h1 class="acctitle">My Accounts</h1>
+                <p class="acctitle">Manage all your financial accounts</p>
+                <div class="card">
+                    <h3>Total Balance</h3>
+                    <p>0.00$</p>
+                </div>
             </section>
             <section>
-                <h2>How to Add an Account</h2>
-                <ol>
-                    <li>Enter account information</li>
-                    <li>Choose account type</li>
-                    <li>Save the account</li>
-                </ol>
+                <div class="account-header">
+                    <p class="section-title">My Accounts</p>
+                    <button id="addaccount">+ Add Account</button>
+                </div>
+                <div class="modal">
+                    <form class="account-form">
+                        <label for="name">Account name</label>
+                        <input type="text" id="name" name="name" required>
+                    
+                        <label for="account_type">Account type</label>
+                        <select id="account_type" name="account_type">
+                            <option value="Checking">Checking</option>
+                            <option value="Savings">Savings</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Digital Wallet">Digital Wallet</option>
+                            <option value="Investment">Investment</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <label for="currency">Currency</label>
+                        <select id="currency" name="currency">
+                            <option value="$">$</option>
+                            <option value="ILS">ILS</option>
+                        </select>
+                    
+                        <label for="balance">Balance</label>
+                        <input type="number" id="balance" name="balance">
+                        <button type="submit" id="submitAccount">Add Account</button>
+                        <button type="button" id="closeModal">Cancel</button>
+                    </form>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Account</th>
+                            <th>Type</th>
+                            <th>Currency</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bank</td>
+                            <td>Checking</td>
+                            <td>ILS</td>
+                            <td>0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <p class="section-title">Recent Account Activity</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Account</th>
+                            <th>Activity</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bank</td>
+                            <td>Deposit</td>
+                            <td>+ 500 ILS</td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
         </main>
+        <script src="script.js"></script>
+        <script>
+            lucide.createIcons();
+        </script>
     </body>
 </html>

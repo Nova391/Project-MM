@@ -2,8 +2,30 @@
 <html>
     <head>
         <title>Transactions</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/lucide@latest"></script>
     </head>
     <body>
+        <nav class="sidebar">
+            <button id="menuButton">☰</button>
+            <a href="main.html">
+                <i data-lucide="house"></i>
+                Home
+            </a>
+            <a href="accounts.html">
+                <i data-lucide="wallet"></i>
+                Accounts
+            </a>
+            <a href="transactions.html">
+                <i data-lucide="arrow-left-right"></i>
+                Transactions
+            </a>
+            <a href="about.html">
+                <i data-lucide="info"></i>
+                About
+            </a>
+        </nav>
+        <main id="maincontent">
         <section>
             <h2>Recent Transactions</h2>
             <table>
@@ -79,5 +101,10 @@
                 <input type="submit" value="Add Transaction">
             </form>
         </section>
+        </main>
+        <script src="script.js"></script>
+        <script>
+            lucide.createIcons();
+        </script>
     </body>
 </html>
