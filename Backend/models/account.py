@@ -1,11 +1,11 @@
 from datetime import datetime
-
 class Account:
-    def __init__(self, name, account_type, currency, balance=0):
+    def __init__(self, name, account_type, currency, balance=0, account_id=None):
         self.name = name
         self.type = account_type
         self.balance = balance
         self.currency = currency
+        self.id = account_id
         self.transactions = []
 
     def deposit(self, amount):
