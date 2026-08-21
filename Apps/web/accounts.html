@@ -108,6 +108,20 @@
                         </div>
                         <div class="modalButtons">
                             <button id="closeDetails">Close</button>
+                            <button id="deleteAccount">Delete Account</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="account-confirmdelete-modal">
+                    <div class="delete-account-confirmation">
+                        <div class="delete-confirmation">
+                            <h2 id="deleteaccount">Delete Account?</h2>
+                            <p class="deletethings">Are you sure you want to delete the account?</p>
+                            <span class="deletethings">This action cannot be undone.</span>
+                        </div>
+                        <div class="deleteAccountConfirmation-Button">
+                            <button id="deleteAccount-cancel">Cancel</button>
+                            <button id="deleteAccount-confirmation">Delete Account</button>
                         </div>
                     </div>
                 </div>
@@ -120,14 +134,7 @@
                             <th>Balance</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Bank</td>
-                            <td>Checking</td>
-                            <td>ILS</td>
-                            <td>0.00</td>
-                        </tr>
-                    </tbody>
+                    <tbody id="accounts-table-body"></tbody>
                 </table>
             </section>
             <section>

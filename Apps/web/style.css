@@ -343,3 +343,122 @@ tbody tr
     width: 15px;
     height: 15px;
 }
+#deleteAccount
+{
+    background-color: transparent;
+    color: rgb(190, 100, 100);
+    border: 1px solid rgb(100, 55, 55);
+}
+#deleteAccount:hover
+{
+    background-color: rgb(150, 53, 36);
+    color: white;
+    border-color: rgb(150, 53, 36);
+}
+.delete-account-confirmation {
+    display: none;
+}
+
+.delete-account-confirmation.hidden {
+    background-color: rgb(45, 30, 62);
+    color: rgb(180, 165, 200);
+
+    border: 1px solid rgb(75, 55, 95);
+
+    width: 380px;
+    padding: 30px 34px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+}
+.account-confirmdelete-modal {
+    display: none;
+}
+
+.account-confirmdelete-modal.hidden {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(10, 5, 15, 0.72);
+    backdrop-filter: blur(4px);
+
+    z-index: 1000;
+}
+#deleteaccount {
+    margin: 0 0 12px 0;
+
+    font-size: 24px;
+    font-weight: 600;
+
+    color: rgb(230, 220, 235);
+
+    text-align: center;
+}
+.deletethings {
+    margin: 0;
+
+    max-width: 330px;
+
+    font-size: 16px;
+    line-height: 1.6;
+    align-items: center;
+    color: rgb(180, 170, 190);
+
+    text-align: center;
+}
+.deleteAccountConfirmation-Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: 12px;
+}
+
+#deleteAccount-confirmation {
+    background-color: rgb(145, 55, 42);
+    color: rgb(240, 230, 230);
+    border: 1px solid rgb(170, 65, 50);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#deleteAccount-confirmation:hover {
+    background-color: rgb(175, 65, 48);
+    border-color: rgb(190, 75, 55);
+}
+
+#deleteAccount-cancel {
+    background-color: transparent;
+    color: rgb(180, 165, 200);
+    border: 1px solid rgb(75, 55, 95);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#deleteAccount-cancel:hover {
+    background-color: rgb(60, 45, 75);
+    color: rgb(210, 200, 220);
+}

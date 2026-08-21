@@ -28,26 +28,115 @@ closeModal.addEventListener("click", function () {
 })
 
 
-
-const detailName = document.querySelector("#detail-name");
-const detailType = document.querySelector("#detail-type");
-const detailCurrency = document.querySelector("#detail-currency");
-const detailBalance = document.querySelector("#detail-balance");
-accountRows.forEach(function (row) {
-
-    row.addEventListener("click", function () {
-
-        const cells = row.querySelectorAll("td");
-        detailName.textContent = cells[0].textContent;
-        detailType.textContent = cells[1].textContent;
-        detailCurrency.textContent = cells[2].textContent;
-        detailBalance.textContent = cells[3].textContent;
-        detailsModal.classList.toggle("hidden");
-
-    });
-
-});
 const closeDetails = document.querySelector("#closeDetails")
 closeDetails.addEventListener("click", function () {
     detailsModal.classList.toggle("hidden");
 })
+
+const detailName = document.querySelector("#detail-name")
+const detailType = document.querySelector("#detail-type")
+const detailCurrency = document.querySelector("#detail-currency")
+const detailBalance = document.querySelector("#detail-balance")
+function loadAccounts() {
+    fetch("http://127.0.0.1:8000/accounts")
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById("accounts-table-body")
+            tableBody.innerHTML = ""
+            data.forEach(account => {
+
+                const name = account[1]
+                const type = account[2]
+                const currency = account[3]
+                const balance = account[4]
+                const id = account[0]
+
+                const row = document.createElement("tr")
+
+                const nameCell = document.createElement("td")
+                const typeCell = document.createElement("td")
+                const currencyCell = document.createElement("td")
+                const balanceCell = document.createElement("td")
+
+                nameCell.textContent = name
+                typeCell.textContent = type
+                currencyCell.textContent = currency
+                balanceCell.textContent = balance
+
+                row.appendChild(nameCell)
+                row.appendChild(typeCell)
+                row.appendChild(currencyCell)
+                row.appendChild(balanceCell)
+
+                row.addEventListener("click", function () {
+                    selectedAccountId = id
+
+                    detailName.textContent = name
+                    detailType.textContent = type
+                    detailCurrency.textContent = currency
+                    detailBalance.textContent = balance
+                    detailsModal.classList.toggle("hidden")
+                })
+
+                tableBody.appendChild(row)
+            })
+        })
+}
+
+
+const nameInput = document.getElementById("name")
+const typeInput = document.getElementById("account_type")
+const currencyInput = document.getElementById("currency")
+const balanceInput = document.getElementById("balance")
+const addButton = document.getElementById("submitAccount")
+addButton.addEventListener("click", function (event) {
+    event.preventDefault()
+    const name = nameInput.value
+    const type = typeInput.value
+    const currency = currencyInput.value
+    const balance = Number(balanceInput.value)
+    fetch("http://127.0.0.1:8000/accounts", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({name, type, currency, balance})
+    })
+        .then(response => response.json())
+        .then(data => {
+            loadAccounts()
+            accountForm.classList.toggle("hidden")
+            modal.classList.toggle("hidden")
+        })
+})
+
+const deleteAccountConfirmation = document.querySelector("#deleteAccount-confirmation")
+const deleteAccountCancel = document.querySelector("#deleteAccount-cancel")
+const deleteAccountConfirmationModal = document.querySelector(".account-confirmdelete-modal")
+const deleteAccountConfirmationForm = document.querySelector(".delete-account-confirmation")
+let selectedAccountId = null
+const deleteAccount = document.getElementById("deleteAccount")
+deleteAccount.addEventListener("click", function (event) {
+    deleteAccountConfirmationForm.classList.toggle("hidden");
+    deleteAccountConfirmationModal.classList.toggle("hidden");
+    detailsModal.classList.toggle("hidden");
+    event.preventDefault()
+})
+
+deleteAccountConfirmation.addEventListener("click", function (event) {
+    event.preventDefault()
+    fetch(`http://127.0.0.1:8000/accounts/${selectedAccountId}`, {
+        method: "DELETE"
+    })
+        .then(response => response.json())
+        .then(data => {
+            loadAccounts()
+            deleteAccountConfirmationForm.classList.toggle("hidden");
+            deleteAccountConfirmationModal.classList.toggle("hidden");
+        })
+})
+
+deleteAccountCancel.addEventListener("click", function (event) {
+    deleteAccountConfirmationForm.classList.toggle("hidden");
+    deleteAccountConfirmationModal.classList.toggle("hidden");
+})
+loadAccounts()
+
