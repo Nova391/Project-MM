@@ -1,79 +1,93 @@
 # Project MM
 
-> A personal finance management system built to make tracking money simple, organized, and understandable.
+**Project MM** is a personal money management system built to help users track their accounts, transactions, goals, and overall financial activity in one place.
 
-## About
+The project started as a way for me to learn software development by building something real rather than following tutorials without a practical goal.
 
-Project MM is a personal finance management system I'm building from the ground up.
+## Current Version
 
-The goal is to have one place where I can manage accounts, track income and expenses, organize transactions, set financial goals, and eventually use the collected data to understand my financial habits and make better decisions.
+**v0.3 — Accounts System**
 
-I'm also using Project MM as a long-term software engineering project. Rather than building it only to practice individual technologies, I'm using it to learn how the different parts of a real application work together — from the frontend and backend to APIs, databases, business logic, and eventually intelligent financial features.
+The current version focuses on building the foundation of the system, especially the account management side.
 
-The project is actively being developed, so both the architecture and features will continue to evolve.
+### Current Features
 
----
-
-## Current Features
-
-- Account management
-- Transaction tracking
-- Income and expense tracking
-- Transaction categories
-- Financial account structure
-- Initial database layer
-- Multi-page frontend
-- Dashboard foundation
-- Collapsible sidebar navigation
-- Initial dark-purple UI design
-
----
+* Create accounts
+* View all accounts
+* View account details
+* Delete accounts with confirmation
+* Store account data in a database
+* REST API built with FastAPI
+* Dynamic web interface connected to the API
+* Basic account management UI
 
 ## Tech Stack
 
-### Frontend
-
-- HTML5
-- CSS3
-- JavaScript
-
 ### Backend
 
-- Python
+* Python
+* FastAPI
+* SQLite
 
-### Database
+### Frontend
 
-- SQLite
+* HTML
+* CSS
+* JavaScript
 
-### Planned
+### Development
 
-- FastAPI
-- REST API
-- Data analysis and forecasting
-- Financial management engine
-- AI-assisted financial features
-
----
+* Git
+* GitHub
 
 ## Project Structure
 
 ```text
 Project MM/
+├── Backend/
+│   ├── api/
+│   ├── DataBase/
+│   └── models/
 │
-├── DataBase/
-│   └── database.py
-│
-├── Logic/
-│   └── account.py
-│
-├── frontend/
-│   ├── main.html
-│   ├── accounts.html
-│   ├── transactions.html
-│   ├── about.html
-│   ├── style.css
-│   └── script.js
-│
-├── main.py
+├── Apps/
+│   └── web/
 │
 └── README.md
+```
+
+The structure will continue to change as the project grows.
+
+## What's Next
+
+The next stages of Project MM will focus on expanding the financial system beyond accounts.
+
+Planned features include:
+
+* Transaction management
+* Categories
+* Financial goals
+* Budgeting
+* Financial analytics
+* Better account management
+* Improved UI and UX
+* More complete API functionality
+
+Eventually, the goal is to build a complete personal finance system rather than just a simple CRUD application.
+
+## Why I Built It
+
+I'm building Project MM as both a useful project and a learning experience.
+
+Instead of trying to learn every technology first and build something later, I'm learning what I need while developing the project itself. This means the architecture and code will evolve as I gain more experience.
+
+There will probably be mistakes, rewrites, and bad decisions along the way — and that's part of the point.
+
+## Status
+
+🚧 **In active development**
+
+This project is still far from finished. The current version is mainly focused on establishing the core architecture and account management functionality.
+
+---
+
+Built by **Mohamed**.
