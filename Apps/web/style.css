@@ -355,11 +355,13 @@ tbody tr
     color: white;
     border-color: rgb(150, 53, 36);
 }
-.delete-account-confirmation {
+.delete-account-confirmation
+{
     display: none;
 }
 
-.delete-account-confirmation.hidden {
+.delete-account-confirmation.hidden
+{
     background-color: rgb(45, 30, 62);
     color: rgb(180, 165, 200);
 
@@ -378,11 +380,12 @@ tbody tr
     text-align: center;
     gap: 14px;
 }
-.account-confirmdelete-modal {
+.account-confirmdelete-modal
+{
     display: none;
 }
-
-.account-confirmdelete-modal.hidden {
+.account-confirmdelete-modal.hidden
+{
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -398,7 +401,8 @@ tbody tr
 
     z-index: 1000;
 }
-#deleteaccount {
+#deleteaccount
+{
     margin: 0 0 12px 0;
 
     font-size: 24px;
@@ -408,7 +412,8 @@ tbody tr
 
     text-align: center;
 }
-.deletethings {
+.deletethings
+{
     margin: 0;
 
     max-width: 330px;
@@ -420,7 +425,8 @@ tbody tr
 
     text-align: center;
 }
-.deleteAccountConfirmation-Button {
+.deleteAccountConfirmation-Button
+{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -428,8 +434,8 @@ tbody tr
     width: 100%;
     margin-top: 12px;
 }
-
-#deleteAccount-confirmation {
+#deleteAccount-confirmation
+{
     background-color: rgb(145, 55, 42);
     color: rgb(240, 230, 230);
     border: 1px solid rgb(170, 65, 50);
@@ -440,13 +446,13 @@ tbody tr
     cursor: pointer;
     transition: all 0.2s ease;
 }
-
-#deleteAccount-confirmation:hover {
+#deleteAccount-confirmation:hover
+{
     background-color: rgb(175, 65, 48);
     border-color: rgb(190, 75, 55);
 }
-
-#deleteAccount-cancel {
+#deleteAccount-cancel
+{
     background-color: transparent;
     color: rgb(180, 165, 200);
     border: 1px solid rgb(75, 55, 95);
@@ -457,8 +463,28 @@ tbody tr
     cursor: pointer;
     transition: all 0.2s ease;
 }
-
-#deleteAccount-cancel:hover {
+#deleteAccount-cancel:hover
+{
     background-color: rgb(60, 45, 75);
     color: rgb(210, 200, 220);
+}
+.edit-row1
+{
+    display: none;
+}
+.edit-row1.hidden
+{
+    display: flex;
+}
+.value-row.hidden
+{
+    display: none;
+}
+.edit-row2
+{
+    display: none;
+}
+.edit-row2
+{
+    display: flex;
 }

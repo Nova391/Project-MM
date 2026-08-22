@@ -74,25 +74,43 @@
                             <span>Account Name</span>
                             <div class="value-row">
                                 <p id="detail-name"></p>
-                                <button class="edit-field" data-field="name" type="button">
+                                <button class="edit-field" data-field="name" type="button" id="edit-field-button1">
                                     <i data-lucide="pencil"></i>
                                 </button>
+                            </div>
+                            <div class="edit-row1">
+                                <input id="edit-name" type="text" class="hidden1">
+                                <button id="save-name-button" class="hidden1">Save</button>
+                                <button id="cancel-name-button" class="hidden1">Cancel</button>
                             </div>
                         </div>
                         <div class="detail">
                             <span>Account Type</span>
                             <div class="value-row">
                                 <p id="detail-type"></p>
-                                <button class="edit-field" data-field="type" type="button">
+                                <button class="edit-field" data-field="type" type="button" id="edit-field-button2">
                                     <i data-lucide="pencil"></i>
                                 </button>
+                            </div>
+                            <div class="edit-row2">
+                                <select id="edit-type" type="text" class="hidden2">
+                                    <option value="Checking">Checking</option>
+                                    <option value="Savings">Savings</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Credit Card">Credit Card</option>
+                                    <option value="Digital Wallet">Digital Wallet</option>
+                                    <option value="Investment">Investment</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <button id="save-tyoe-button" class="hidden2">Save</button>
+                                <button id="cancel-type-button" class="hidden2">Cancel</button>
                             </div>
                         </div>
                         <div class="detail">
                             <span>Currency</span>
                             <div class="value-row">
                                 <p id="detail-currency"></p>
-                                <button class="edit-field" data-field="currency" type="button">
+                                <button class="edit-field" data-field="currency" type="button" id="edit-field-button3">
                                     <i data-lucide="pencil"></i>
                                 </button>
                             </div>
@@ -101,7 +119,7 @@
                             <span>Balance</span>
                             <div class="value-row">
                                 <p id="detail-balance"></p>
-                                <button class="edit-field" data-field="balance" type="button">
+                                <button class="edit-field" data-field="balance" type="button" id="edit-field-button4">
                                     <i data-lucide="pencil"></i>
                                 </button>
                             </div>

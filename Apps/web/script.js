@@ -138,5 +138,52 @@ deleteAccountCancel.addEventListener("click", function (event) {
     deleteAccountConfirmationForm.classList.toggle("hidden");
     deleteAccountConfirmationModal.classList.toggle("hidden");
 })
+
+
+const editButton1 = document.querySelector("#edit-field-button1")
+const editButton2 = document.querySelector("#edit-field-button2")
+const editButton3 = document.querySelector("#edit-field-button3")
+const editButton4 = document.querySelector("#edit-field-button4")
+
+const HiddenThings = document.querySelector(".hidden1")
+const EditRow1 = document.querySelector(".edit-row1")
+const ValueRow = document.querySelector(".value-row")
+const editNameInput = document.getElementById("edit-name")
+editButton1.addEventListener("click", function (event) {
+    EditRow1.classList.toggle("hidden");
+    ValueRow.classList.toggle("hidden");
+    editNameInput.value = detailName.textContent;
+})
 loadAccounts()
 
+const SaveNameButton = document.querySelector("#save-name-button")
+SaveNameButton.addEventListener("click", function (event) {
+    event.preventDefault()
+    const newName = editNameInput.value
+    fetch(`http://127.0.0.1:8000/accounts/${selectedAccountId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: newName,
+            type: detailType.textContent,
+            currency: detailCurrency.textContent,
+            balance: Number(detailBalance.textContent)
+        })
+    })
+    .then(response => response.json)
+    .then(data => {
+        detailName.textContent = newName
+        EditRow1.classList.toggle("hidden");
+        ValueRow.classList.toggle("hidden");
+        loadAccounts()
+    })
+})
+const CancelNameButton = document.querySelector("#cancel-name-button")
+CancelNameButton.addEventListener("click", function (event) {
+    event.preventDefault()
+    EditRow1.classList.toggle("hidden");
+    ValueRow.classList.toggle("hidden");
+})
+loadAccounts()
