@@ -2,25 +2,26 @@
 <html>
     <head>
         <title>Accounts</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../Shared/shared.css">
+        <link rel="stylesheet" href="../Accounts/accounts.css">
         <script src="https://unpkg.com/lucide@latest"></script>
     </head>
     <body>
         <nav class="sidebar">
             <button id="menuButton">☰</button>
-            <a href="main.html">
+            <a href="../Dashboard/dashboard.html">
                 <i data-lucide="house"></i>
                 Home
             </a>
-            <a href="accounts.html">
+            <a href="..//Accounts/accounts.html">
                 <i data-lucide="wallet"></i>
                 Accounts
             </a>
-            <a href="transactions.html">
+            <a href="../Transactions/transactions.html">
                 <i data-lucide="arrow-left-right"></i>
                 Transactions
             </a>
-            <a href="about.html">
+            <a href="../About/about.html">
                 <i data-lucide="info"></i>
                 About
             </a>
@@ -72,28 +73,28 @@
                         <h2>Account Details</h2>
                         <div class="detail">
                             <span>Account Name</span>
-                            <div class="value-row">
+                            <div class="value-row1">
                                 <p id="detail-name"></p>
                                 <button class="edit-field" data-field="name" type="button" id="edit-field-button1">
                                     <i data-lucide="pencil"></i>
                                 </button>
                             </div>
                             <div class="edit-row1">
-                                <input id="edit-name" type="text" class="hidden1">
-                                <button id="save-name-button" class="hidden1">Save</button>
-                                <button id="cancel-name-button" class="hidden1">Cancel</button>
+                                <input id="edit-name" type="text" class="hidden">
+                                <button id="save-name-button" class="hidden">Save</button>
+                                <button id="cancel-name-button" class="hidden">Cancel</button>
                             </div>
                         </div>
                         <div class="detail">
                             <span>Account Type</span>
-                            <div class="value-row">
+                            <div class="value-row2">
                                 <p id="detail-type"></p>
                                 <button class="edit-field" data-field="type" type="button" id="edit-field-button2">
                                     <i data-lucide="pencil"></i>
                                 </button>
                             </div>
                             <div class="edit-row2">
-                                <select id="edit-type" type="text" class="hidden2">
+                                <select id="edit-type" type="text" class="hidden">
                                     <option value="Checking">Checking</option>
                                     <option value="Savings">Savings</option>
                                     <option value="Cash">Cash</option>
@@ -102,26 +103,39 @@
                                     <option value="Investment">Investment</option>
                                     <option value="Other">Other</option>
                                 </select>
-                                <button id="save-tyoe-button" class="hidden2">Save</button>
-                                <button id="cancel-type-button" class="hidden2">Cancel</button>
+                                <button id="save-type-button" class="hidden">Save</button>
+                                <button id="cancel-type-button" class="hidden">Cancel</button>
                             </div>
                         </div>
                         <div class="detail">
                             <span>Currency</span>
-                            <div class="value-row">
+                            <div class="value-row3">
                                 <p id="detail-currency"></p>
                                 <button class="edit-field" data-field="currency" type="button" id="edit-field-button3">
                                     <i data-lucide="pencil"></i>
                                 </button>
                             </div>
+                            <div class="edit-row3">
+                                <select id="edit-currency" type="text" class="hidden">
+                                    <option value="$">$</option>
+                                    <option value="ILS">ILS</option>
+                                </select>
+                                <button id="save-currency-button" class="hidden">Save</button>
+                                <button id="cancel-currency-button" class="hidden">Cancel</button>
+                            </div>
                         </div>
                         <div class="detail">
                             <span>Balance</span>
-                            <div class="value-row">
+                            <div class="value-row4">
                                 <p id="detail-balance"></p>
                                 <button class="edit-field" data-field="balance" type="button" id="edit-field-button4">
                                     <i data-lucide="pencil"></i>
                                 </button>
+                            </div>
+                            <div class="edit-row4">
+                                <input id="edit-balance" type="number" class="hidden">
+                                <button id="save-balance-button" class="hidden">Save</button>
+                                <button id="cancel-balance-button" class="hidden">Cancel</button>
                             </div>
                         </div>
                         <div class="modalButtons">
@@ -133,7 +147,7 @@
                 <div class="account-confirmdelete-modal">
                     <div class="delete-account-confirmation">
                         <div class="delete-confirmation">
-                            <h2 id="deleteaccount">Delete Account?</h2>
+                            <h2 id="deleteaccountHeader">Delete Account?</h2>
                             <p class="deletethings">Are you sure you want to delete the account?</p>
                             <span class="deletethings">This action cannot be undone.</span>
                         </div>
@@ -175,7 +189,8 @@
                 </table>
             </section>
         </main>
-        <script src="script.js"></script>
+        <script src="../Shared/shared.js"></script>
+        <script src="../Accounts/accounts.js"></script>
         <script>
             lucide.createIcons();
         </script>

@@ -1,0 +1,10 @@
+.cards
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+.money
+{
+    color: rgb(235, 230, 240);
+}

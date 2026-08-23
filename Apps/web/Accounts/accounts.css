@@ -1,103 +1,10 @@
-/* for all of them */
-body
-{
-    background-color: rgb(18, 12, 28);
-}
-.sidebar
-{
-    position: fixed;
-    left: -250px;
-    top: 0;
-    width: 250px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    gap: 70px;
-    background-color: rgb(35, 20, 50);
-    transition: left 0.5s;
-    box-shadow: inset;
-    box-sizing: border-box;
-}
-.sidebar a
-{
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    padding: 20px;
-    font-size: 20px;
-}
-.sidebar a:hover
-{
-    background-color: rgb(52, 38, 65);
-    border-radius: 13px;
-}
-.sidebar.hidden
-{
-    left: 0px;
-    box-sizing: border-box;
-}
-.sidebar svg
-{
-    width: 20px;
-    height: 20px;
-}
-#menuButton 
-{
-    background-color: rgb(90, 65, 110);
-    right: -40px;
-    top: 20px;
-    overflow: visible;
-    position: absolute;
-    border-radius: 10px;
-    color: white;
-}
-main
-{
-    margin-left: 0px;
-    color: white;
-    transition: margin-left 0.5s;
-}
-main.shifted
-{
-    margin-left: 250px;
-}
-.card
-{
-    background-color: rgb(45, 30, 62);
-    border-radius: 12px;
-    border: 1px solid rgb(55, 45, 65);
-    padding: 10px;
-    font-size: 20px;
-    text-align: center;
-    margin: 0 auto;
-    width: 450px;
-}
-section
-{
-    margin-bottom: 30px;
-}
-
-/* main page */
-.cards
-{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-}
-.money
-{
-    color: rgb(235, 230, 240);
-}
-
-/* accounts page */
-
+/* === PAGE TITLE === */
 .acctitle
 {
     text-align: center;
 }
+
+/* === ACCOUNTS TABLE === */
 table
 {
     width: 100%;
@@ -121,12 +28,29 @@ tbody tr
     border-bottom: 1px solid rgb(65, 45, 80);
     border-top: 1px solid rgb(65, 45, 80);
 }
+
+
+/* === TABLE HEADER === */
 .account-header
 {
     display: flex;
     justify-content: space-between;
     
 }
+.section-title
+{
+    color: rgb(235, 230, 245);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 15px;
+}
+
+
+
+/* ===== ADD ACCOUNT ===== */
+
+
+/* === ADD ACCOUNT BUTTON === */
 #addaccount
 {
     background-color: rgb(115, 85, 160);
@@ -142,13 +66,8 @@ tbody tr
 {
     background-color: rgb(135, 100, 185);
 }
-.section-title
-{
-    color: rgb(235, 230, 245);
-    font-size: 24px;
-    font-weight: 600;
-    margin: 15px;
-}
+
+/* === ADD ACCOUNT MODAL === */
 .modal
 {
     display: none;
@@ -165,6 +84,8 @@ tbody tr
     align-items: center;
     background-color: rgba(10, 5, 15, 0.65);
 }
+
+/* === ADD ACCOUNT FORM === */
 .account-form
 {
     border: 10px;
@@ -209,6 +130,14 @@ tbody tr
     font-weight: 600;
     cursor: pointer;
 }
+.account-form input[type="number"]::-webkit-inner-spin-button,
+.account-form input[type="number"]::-webkit-outer-spin-button
+{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* === SUBMIT ACCOUNT BUTTON === */
 #submitAccount
 {
     background-color: rgb(115, 85, 160);
@@ -219,6 +148,8 @@ tbody tr
 {
     background-color: rgb(135, 100, 185);
 }
+
+/* === CLOSE ACCOUNT FORM BUTTON === */
 #closeModal
 {
     background-color: transparent;
@@ -230,12 +161,13 @@ tbody tr
     background-color: rgb(57, 32, 80);
     color: white;
 }
-.account-form input[type="number"]::-webkit-inner-spin-button,
-.account-form input[type="number"]::-webkit-outer-spin-button
-{
-    -webkit-appearance: none;
-    margin: 0;
-}
+
+
+
+/* ===== ACCOUNT DETAILS ===== */
+
+
+/* === ACCOUNT DETAILS MODAL === */
 .account-details-modal
 {
     display: none;
@@ -252,6 +184,8 @@ tbody tr
     align-items: center;
     background-color: rgba(10, 5, 15, 0.65);
 }
+
+/* === ACCOUNT DETAILS CONTAINER === */
 .account-details
 {
     border: 10px;
@@ -266,6 +200,8 @@ tbody tr
     padding: 50px;
     text-align: left;
 }
+
+/* === ACCOUNT DETAIL FIELDS === */
 .detail
 {
     margin-bottom: 18px;
@@ -276,7 +212,7 @@ tbody tr
     font-size: 15px;
     font-weight: 500;
 }
-
+/* === ACCOUNT DETAIL TEXT === */
 .detail p
 {
     color: rgb(235, 230, 245);
@@ -284,11 +220,14 @@ tbody tr
     font-weight: 600;
     margin: 5px 0 0;
 }
+/* === ACCOUNT BALANCE === */
 #detail-balance
 {
     font-size: 24px;
     font-weight: 700;
 }
+
+/* === ACCOUNT DETAILS BUTTONS === */
 .modalButtons
 {
     display: flex;
@@ -313,6 +252,8 @@ tbody tr
     background-color: rgb(57, 32, 80);
     color: white;
 }
+
+/* === EDIT FIELD BUTTONS === */
 .edit-field
 {
     background-color: rgb(45, 30, 62);
@@ -332,17 +273,21 @@ tbody tr
     color: rgb(245, 240, 250);
     cursor: pointer;
 }
-.value-row
-{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 .edit-field svg
 {
     width: 15px;
     height: 15px;
 }
+
+/* === ACCOUNT VALUE ROW === */
+.value-row1, .value-row2, .value-row3, .value-row4
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* === DELETE ACCOUNT BUTTON === */
 #deleteAccount
 {
     background-color: transparent;
@@ -355,11 +300,12 @@ tbody tr
     color: white;
     border-color: rgb(150, 53, 36);
 }
+
+/* === DELETE ACCOUNT CONFIRMATION FORM === */
 .delete-account-confirmation
 {
     display: none;
 }
-
 .delete-account-confirmation.hidden
 {
     background-color: rgb(45, 30, 62);
@@ -380,6 +326,8 @@ tbody tr
     text-align: center;
     gap: 14px;
 }
+
+/* === DELETE ACCOUNT CONFIRMATION MODAL === */ 
 .account-confirmdelete-modal
 {
     display: none;
@@ -401,17 +349,18 @@ tbody tr
 
     z-index: 1000;
 }
-#deleteaccount
+
+/* === DELETE CONFIRMATION TITLE === */
+#deleteaccountHeader
 {
     margin: 0 0 12px 0;
-
     font-size: 24px;
     font-weight: 600;
-
     color: rgb(230, 220, 235);
-
     text-align: center;
 }
+
+/* === DELETE CONFIRMATION MESSAGE === */
 .deletethings
 {
     margin: 0;
@@ -425,6 +374,8 @@ tbody tr
 
     text-align: center;
 }
+
+/* === DELETE ACCOUNT CONFIRMATION BUTTONS === */
 .deleteAccountConfirmation-Button
 {
     display: flex;
@@ -434,6 +385,8 @@ tbody tr
     width: 100%;
     margin-top: 12px;
 }
+
+/* === DELETE CONFIRM BUTTON === */
 #deleteAccount-confirmation
 {
     background-color: rgb(145, 55, 42);
@@ -451,6 +404,8 @@ tbody tr
     background-color: rgb(175, 65, 48);
     border-color: rgb(190, 75, 55);
 }
+
+/* === DELETE CANCEL BUTTON === */
 #deleteAccount-cancel
 {
     background-color: transparent;
@@ -468,6 +423,12 @@ tbody tr
     background-color: rgb(60, 45, 75);
     color: rgb(210, 200, 220);
 }
+
+
+
+/* ===== EDIT ACCOUNT ===== */
+
+/* === EDIT ACCOUNT NAME === */
 .edit-row1
 {
     display: none;
@@ -476,15 +437,155 @@ tbody tr
 {
     display: flex;
 }
-.value-row.hidden
+.value-row1.hidden
 {
     display: none;
 }
+
+/* === EDIT ACCOUNT TYPE === */
 .edit-row2
 {
     display: none;
 }
-.edit-row2
+.edit-row2.hidden
 {
     display: flex;
+}
+.value-row2.hidden
+{
+    display: none;
+}
+
+/* === EDIT ACCOUNT CURRENCY === */
+.edit-row3
+{
+    display: none;
+}
+.edit-row3.hidden
+{
+    display: flex;
+}
+.value-row3.hidden
+{
+    display: none;
+}
+
+/* === EDIT ACCOUNT BALANCE === */
+.edit-row4
+{
+    display: none;
+}
+.edit-row4.hidden
+{
+    display: flex;
+}
+.value-row4.hidden
+{
+    display: none;
+}
+.edit-row4 input[type="number"]::-webkit-inner-spin-button,
+.edit-row4 input[type="number"]::-webkit-outer-spin-button
+{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.edit-row4 input[type="number"]
+{
+    -moz-appearance: textfield;
+}
+
+/* === EDIT ACCOUNT FIELDS === */
+.edit-row1,
+.edit-row2,
+.edit-row3,
+.edit-row4
+{
+    display: none;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.edit-row1.hidden,
+.edit-row2.hidden,
+.edit-row3.hidden,
+.edit-row4.hidden
+{
+    display: flex;
+}
+
+/* === EDIT INPUTS & SELECTS === */
+.edit-row1 input,
+.edit-row2 select,
+.edit-row3 select,
+.edit-row4 input
+{
+    flex: 1;
+    background-color: rgb(25, 17, 35);
+    color: rgb(235, 230, 245);
+    border: 1px solid rgb(65, 45, 80);
+    border-radius: 7px;
+    padding: 9px 11px;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+.edit-row1 input:focus,
+.edit-row2 select:focus,
+.edit-row3 select:focus,
+.edit-row4 input:focus
+{
+    border-color: rgb(115, 85, 160);
+}
+
+/* === EDIT SAVE & CANCEL BUTTONS === */
+.edit-row1 button,
+.edit-row2 button,
+.edit-row3 button,
+.edit-row4 button
+{
+    padding: 9px 14px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* === SAVE BUTTON === */
+#save-name-button,
+#save-type-button,
+#save-currency-button,
+#save-balance-button
+{
+    background-color: rgb(115, 85, 160);
+    color: white;
+    border: 1px solid rgb(115, 85, 160);
+}
+
+#save-name-button:hover,
+#save-type-button:hover,
+#save-currency-button:hover,
+#save-balance-button:hover
+{
+    background-color: rgb(135, 100, 185);
+}
+
+/* === CANCEL BUTTON === */
+#cancel-name-button,
+#cancel-type-button,
+#cancel-currency-button,
+#cancel-balance-button
+{
+    background-color: transparent;
+    color: rgb(180, 170, 190);
+    border: 1px solid rgb(65, 45, 80);
+}
+#cancel-name-button:hover,
+#cancel-type-button:hover,
+#cancel-currency-button:hover,
+#cancel-balance-button:hover
+{
+    background-color: rgb(57, 32, 80);
+    color: white;
 }

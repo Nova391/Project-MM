@@ -1,38 +1,29 @@
-const menuButton = document.querySelector("#menuButton");
-const sidebar = document.querySelector(".sidebar");
-const maincontent = document.querySelector("#maincontent");
+/* === ADD ACCOUNT MODAL OPEN === */
 const addaccount = document.querySelector("#addaccount");
 const accountForm = document.querySelector(".account-form")
 const modal = document.querySelector(".modal");
-const closeModal = document.querySelector("#closeModal");
-const accountRows = document.querySelectorAll(".accounts-table tbody tr");
-const detailsModal = document.querySelector(".account-details-modal")
-
-console.log(menuButton);
-console.log(sidebar);
-
-menuButton.addEventListener("click", function () {
-    sidebar.classList.toggle("hidden")
-    maincontent.classList.toggle("shifted");
-})
-
-
 addaccount.addEventListener("click", function () {
     accountForm.classList.toggle("hidden");
     modal.classList.toggle("hidden");
 })
 
+/* === ADD ACCOUNT MODAL CLOSE === */
+const closeModal = document.querySelector("#closeModal");
 closeModal.addEventListener("click", function () {
     accountForm.classList.toggle("hidden");
     modal.classList.toggle("hidden");
 })
 
 
+/* === ACCOUNT DETAILS MODAL === */
 const closeDetails = document.querySelector("#closeDetails")
+const detailsModal = document.querySelector(".account-details-modal")
 closeDetails.addEventListener("click", function () {
     detailsModal.classList.toggle("hidden");
 })
 
+
+/* === LOAD ACCOUNTS === */
 const detailName = document.querySelector("#detail-name")
 const detailType = document.querySelector("#detail-type")
 const detailCurrency = document.querySelector("#detail-currency")
@@ -84,6 +75,7 @@ function loadAccounts() {
 }
 
 
+/* === CREATE ACCOUNT === */
 const nameInput = document.getElementById("name")
 const typeInput = document.getElementById("account_type")
 const currencyInput = document.getElementById("currency")
@@ -108,6 +100,7 @@ addButton.addEventListener("click", function (event) {
         })
 })
 
+/* === DELETE ACCOUNT === */
 const deleteAccountConfirmation = document.querySelector("#deleteAccount-confirmation")
 const deleteAccountCancel = document.querySelector("#deleteAccount-cancel")
 const deleteAccountConfirmationModal = document.querySelector(".account-confirmdelete-modal")
@@ -140,22 +133,19 @@ deleteAccountCancel.addEventListener("click", function (event) {
 })
 
 
-const editButton1 = document.querySelector("#edit-field-button1")
-const editButton2 = document.querySelector("#edit-field-button2")
-const editButton3 = document.querySelector("#edit-field-button3")
-const editButton4 = document.querySelector("#edit-field-button4")
+/* ===== EDIT ACCOUNT ===== */
 
-const HiddenThings = document.querySelector(".hidden1")
+
+/* === EDIT ACCOUNT NAME === */
+const editButton1 = document.querySelector("#edit-field-button1")
 const EditRow1 = document.querySelector(".edit-row1")
-const ValueRow = document.querySelector(".value-row")
+const ValueRow1 = document.querySelector(".value-row1")
 const editNameInput = document.getElementById("edit-name")
 editButton1.addEventListener("click", function (event) {
     EditRow1.classList.toggle("hidden");
-    ValueRow.classList.toggle("hidden");
+    ValueRow1.classList.toggle("hidden");
     editNameInput.value = detailName.textContent;
 })
-loadAccounts()
-
 const SaveNameButton = document.querySelector("#save-name-button")
 SaveNameButton.addEventListener("click", function (event) {
     event.preventDefault()
@@ -176,7 +166,7 @@ SaveNameButton.addEventListener("click", function (event) {
     .then(data => {
         detailName.textContent = newName
         EditRow1.classList.toggle("hidden");
-        ValueRow.classList.toggle("hidden");
+        ValueRow1.classList.toggle("hidden");
         loadAccounts()
     })
 })
@@ -184,6 +174,131 @@ const CancelNameButton = document.querySelector("#cancel-name-button")
 CancelNameButton.addEventListener("click", function (event) {
     event.preventDefault()
     EditRow1.classList.toggle("hidden");
-    ValueRow.classList.toggle("hidden");
+    ValueRow1.classList.toggle("hidden");
+})
+loadAccounts()
+
+/* === EDIT ACCOUNT TYPE === */
+const editButton2 = document.querySelector("#edit-field-button2")
+const EditRow2 = document.querySelector(".edit-row2")
+const editTypeInput = document.querySelector("#edit-type")
+const ValueRow2 = document.querySelector(".value-row2")
+editButton2.addEventListener("click", function (event) {
+    EditRow2.classList.toggle("hidden");
+    ValueRow2.classList.toggle("hidden");
+    editTypeInput.value = detailType.textContent;
+})
+const SaveTypeButton = document.querySelector("#save-type-button")
+SaveTypeButton.addEventListener("click", function (event) {
+    event.preventDefault()
+    const newType = editTypeInput.value
+    fetch(`http://127.0.0.1:8000/accounts/${selectedAccountId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: detailName.textContent,
+            type: newType,
+            currency: detailCurrency.textContent,
+            balance: Number(detailBalance.textContent)
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        detailType.textContent = newType
+        loadAccounts()
+    })
+    EditRow2.classList.toggle("hidden");
+    ValueRow2.classList.toggle("hidden");
+})
+const CancelTypeButton = document.querySelector("#cancel-type-button")
+CancelTypeButton.addEventListener("click", function () {
+    EditRow2.classList.toggle("hidden");
+    ValueRow2.classList.toggle("hidden");
+})
+loadAccounts()
+
+/* === EDIT ACCOUNT CURRENCY === */
+const editButton3 = document.querySelector("#edit-field-button3")
+const EditRow3 = document.querySelector(".edit-row3")
+const editCurrencyInput = document.querySelector("#edit-currency")
+const ValueRow3 = document.querySelector(".value-row3")
+editButton3.addEventListener("click", function (event) {
+    EditRow3.classList.toggle("hidden");
+    ValueRow3.classList.toggle("hidden");
+    editCurrencyInput.value = detailCurrency.textContent;
+})
+const SaveCurrencyButton = document.querySelector("#save-currency-button")
+SaveCurrencyButton.addEventListener("click", function (event) {
+    event.preventDefault()
+    const newCurrency = editCurrencyInput.value
+    fetch(`http://127.0.0.1:8000/accounts/${selectedAccountId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: detailName.textContent,
+            type: detailType.textContent,
+            currency: newCurrency,
+            balance: Number(detailBalance.textContent)
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        detailCurrency.textContent = newCurrency
+        loadAccounts()
+    })
+    EditRow3.classList.toggle("hidden");
+    ValueRow3.classList.toggle("hidden");
+})
+const CancelCurrencyButton = document.querySelector("#cancel-currency-button")
+CancelCurrencyButton.addEventListener("click", function (event) {
+    EditRow3.classList.toggle("hidden");
+    ValueRow3.classList.toggle("hidden");
+})
+loadAccounts()
+
+
+/* === EDIT ACCOUNT BALANCE === */
+const editButton4 = document.querySelector("#edit-field-button4")
+const EditRow4 = document.querySelector(".edit-row4")
+const editBalanceInput = document.querySelector("#edit-balance")
+const ValueRow4 = document.querySelector(".value-row4")
+editButton4.addEventListener("click", function (event) {
+    EditRow4.classList.toggle("hidden");
+    ValueRow4.classList.toggle("hidden");
+    editBalanceInput.value = detailBalance.textContent;
+})
+const SaveBalanceButton = document.querySelector("#save-balance-button")
+SaveBalanceButton.addEventListener("click", function (event) {
+    event.preventDefault()
+    const newBalance = Number(editBalanceInput.value)
+    fetch(`http://127.0.0.1:8000/accounts/${selectedAccountId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: detailName.textContent,
+            type: detailType.textContent,
+            currency: detailCurrency.textContent,
+            balance: newBalance
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        detailBalance.textContent = newBalance
+        EditRow4.classList.toggle("hidden");
+        ValueRow4.classList.toggle("hidden");
+        loadAccounts()
+    })
+})
+const CancelBalanceButton = document.querySelector("#cancel-balance-button")
+CancelBalanceButton.addEventListener("click", function (event) {
+    event.preventDefault()
+    EditRow4.classList.toggle("hidden");
+    ValueRow4.classList.toggle("hidden");
 })
 loadAccounts()
