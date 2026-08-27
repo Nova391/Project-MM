@@ -32,6 +32,7 @@ function loadAccounts() {
     fetch("http://127.0.0.1:8000/accounts")
         .then(response => response.json())
         .then(data => {
+            CalculateTotalBalance(data)
             const tableBody = document.getElementById("accounts-table-body")
             tableBody.innerHTML = ""
             data.forEach(account => {
@@ -176,7 +177,6 @@ CancelNameButton.addEventListener("click", function (event) {
     EditRow1.classList.toggle("hidden");
     ValueRow1.classList.toggle("hidden");
 })
-loadAccounts()
 
 /* === EDIT ACCOUNT TYPE === */
 const editButton2 = document.querySelector("#edit-field-button2")
@@ -217,7 +217,6 @@ CancelTypeButton.addEventListener("click", function () {
     EditRow2.classList.toggle("hidden");
     ValueRow2.classList.toggle("hidden");
 })
-loadAccounts()
 
 /* === EDIT ACCOUNT CURRENCY === */
 const editButton3 = document.querySelector("#edit-field-button3")
@@ -258,7 +257,6 @@ CancelCurrencyButton.addEventListener("click", function (event) {
     EditRow3.classList.toggle("hidden");
     ValueRow3.classList.toggle("hidden");
 })
-loadAccounts()
 
 
 /* === EDIT ACCOUNT BALANCE === */
@@ -301,4 +299,19 @@ CancelBalanceButton.addEventListener("click", function (event) {
     EditRow4.classList.toggle("hidden");
     ValueRow4.classList.toggle("hidden");
 })
+
+
+/* === TOTAL BALANCE === */
+const TotalBalanceILS = document.querySelector("#TotalBalance-ILS")
+function CalculateTotalBalance(accounts) {
+    let totalBalance = 0
+    accounts.forEach(account => {
+        const currency = account[3]
+        const balance = Number(account[4])
+        if (currency === "ILS") {
+            totalBalance += balance
+        }
+    })
+    TotalBalanceILS.textContent = `${totalBalance.toFixed(2)} ILS`
+}
 loadAccounts()

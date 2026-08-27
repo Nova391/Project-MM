@@ -8,13 +8,13 @@ accounts( id INTEGER PRIMARY KEY,
 name TEXT, 
 type TEXT, 
 currency TEXT, 
-balance INTEGER )
+balance REAL )
 """)
 
 cursor.execute(""" CREATE TABLE IF NOT EXISTS 
 categories( id INTEGER PRIMARY KEY,
-name TEXT,
-type TEXT )
+name TEXT NOT NULL,
+type TEXT NOT NULL)
 """)
 
 cursor.execute(""" CREATE TABLE IF NOT EXISTS 
@@ -27,11 +27,11 @@ deadline TEXT)
 
 cursor.execute(""" CREATE TABLE IF NOT EXISTS
 transactions( id INTEGER PRIMARY KEY, 
-account_id INTEGER, 
-amount INTEGER, 
-type TEXT, 
+account_id INTEGER NOT NULL, 
+amount REAL NOT NULL, 
+type TEXT NOT NULL, 
 category_id INTEGER, 
-date TEXT, 
+date TEXT NOT NULL, 
 description TEXT, 
 FOREIGN KEY (account_id) REFERENCES accounts(id),
 FOREIGN KEY (category_id) REFERENCES categories(id))
