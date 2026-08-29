@@ -1,32 +1,74 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Transactions</title>
-        <link rel="stylesheet" href="../Shared/shared.css">
-        <link rel="stylesheet" href="../Transactions/transactions.css"
-        <script src="https://unpkg.com/lucide@latest"></script>
-    </head>
-    <body>
-        <nav class="sidebar">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions</title>
+    <link rel="stylesheet" href="../Shared/shared.css">
+    <link rel="stylesheet" href="../Transactions/transactions.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- SINGLE SIDEBAR CONTAINER -->
+    <nav class="sidebar">
+        <div class="sidebarHeader">
             <button id="menuButton">☰</button>
-            <a href="../Dashboard/dashboard.html">
-                <i data-lucide="house"></i>
-                Home
-            </a>
-            <a href="../Accounts/accounts.html">
-                <i data-lucide="wallet"></i>
-                Accounts
-            </a>
-            <a href="../Transactions/transactions.html">
-                <i data-lucide="arrow-left-right"></i>
-                Transactions
-            </a>
-            <a href="../About/about.html">
-                <i data-lucide="info"></i>
-                About
-            </a>
-        </nav>
-        <main id="maincontent">
+            <span class="sidebar-title">Project MM</span>
+        </div>
+
+        <a href="../dashboard/dashboard.html">
+            <i data-lucide="house"></i>
+            <span class="link-text">Home</span>
+        </a>
+        <a href="../Accounts/accounts.html">
+            <i data-lucide="wallet"></i>
+            <span class="link-text">Accounts</span>
+        </a>
+        <a href="../Transactions/transactions.html" class="active">
+            <i data-lucide="arrow-left-right"></i>
+            <span class="link-text">Transactions</span>
+        </a>
+        <a href="../About/about.html">
+            <i data-lucide="info"></i>
+            <span class="link-text">About</span>
+        </a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main id="maincontent">
+        <section>
+            <div class="transactionsHeader">
+                <h2 id="transactionsTitle">Transactions</h2>
+                <button id="AddTransaction">+ New Transaction</button>
+            </div>
+            <div class="AddTransactionsModal">
+                <div class="AddTransactionsForm">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" name="amount" required>
+
+                    <label for="description">Description</label>
+                    <input type="text" id="description" name="description" required>
+
+                    <label for="type">Type</label>
+                    <select id="type" name="type" required>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+
+                    <label for="category">Category</label>
+                    <select id="category" name="Category" required>
+                    </select>
+
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" required>
+
+                    <button type="submit" id="submitTransaction">Add Transaction</button>
+                    <button type="button" id="closeModal">Cancel</button>
+                </div>
+            </div>
+        </section>
+        
         <section>
             <h2>Recent Transactions</h2>
             <table>
@@ -43,41 +85,12 @@
                 <tbody></tbody>
             </table>
         </section>
-        <section>
-            <h2>Add Transaction</h2>
-            <form>
-                <label for="amount">amount:</label>
-                <input type="number" id="amount" name="amount" required>
+    </main>
 
-                <label for="description">description:</label>
-                <input type="text" id="description" name="description" required>
-
-                <label for="type">type:</label>
-                <select id="type" name="type" required>
-                    <option value="income">Income</option>
-                    <option value="expense">Expense</option>
-                </select>
-
-                <label for="category">category:</label>
-                <select id="category" name="Category" required>
-                    <option value="Food">Food</option>
-                    <option value="Transport">Transport</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Bills">Bills</option>
-                    <option value="other">Other</option>
-                </select>
-
-                <label for="date">date:</label>
-                <input type="date" id="date" name="date" required>
-
-                <input type="submit" value="Add Transaction">
-            </form>
-        </section>
-        </main>
-        <script src="../Shared/shared.js"></script>
-        <script src="../Transactions/transactions.js"></script>
-        <script>
-            lucide.createIcons();
-        </script>
-    </body>
+    <script src="../Shared/shared.js"></script>
+    <script src="../Transactions/transactions.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
 </html>

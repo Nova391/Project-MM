@@ -33,7 +33,7 @@ type TEXT NOT NULL,
 category_id INTEGER, 
 date TEXT NOT NULL, 
 description TEXT, 
-FOREIGN KEY (account_id) REFERENCES accounts(id),
+FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE,
 FOREIGN KEY (category_id) REFERENCES categories(id))
 """)
 

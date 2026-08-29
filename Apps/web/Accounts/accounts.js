@@ -96,6 +96,7 @@ addButton.addEventListener("click", function (event) {
         .then(response => response.json())
         .then(data => {
             loadAccounts()
+            accountForm.reset();
             accountForm.classList.toggle("hidden")
             modal.classList.toggle("hidden")
         })
@@ -163,7 +164,7 @@ SaveNameButton.addEventListener("click", function (event) {
             balance: Number(detailBalance.textContent)
         })
     })
-    .then(response => response.json)
+    .then(response => response.json())
     .then(data => {
         detailName.textContent = newName
         EditRow1.classList.toggle("hidden");

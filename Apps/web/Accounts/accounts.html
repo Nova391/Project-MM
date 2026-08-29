@@ -1,46 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Accounts</title>
         <link rel="stylesheet" href="../Shared/shared.css">
         <link rel="stylesheet" href="../Accounts/accounts.css">
         <script src="https://unpkg.com/lucide@latest"></script>
     </head>
     <body>
-        <nav class="sidebar">
-            <button id="menuButton">☰</button>
-            <a href="../Dashboard/dashboard.html">
+        
+        <!-- SINGLE SIDEBAR CONTAINER -->
+        <nav class="sidebar" aria-label="Main Navigation">
+            <div class="sidebarHeader">
+                <button id="menuButton" aria-label="Toggle Navigation Menu">☰</button>
+                <span class="sidebar-title">Project MM</span>
+            </div>
+    
+            <a href="../dashboard/dashboard.html">
                 <i data-lucide="house"></i>
-                Home
+                <span class="link-text">Home</span>
             </a>
-            <a href="../Accounts/accounts.html">
+            <a href="../Accounts/accounts.html" class="active">
                 <i data-lucide="wallet"></i>
-                Accounts
+                <span class="link-text">Accounts</span>
             </a>
             <a href="../Transactions/transactions.html">
                 <i data-lucide="arrow-left-right"></i>
-                Transactions
+                <span class="link-text">Transactions</span>
             </a>
             <a href="../About/about.html">
                 <i data-lucide="info"></i>
-                About
+                <span class="link-text">About</span>
             </a>
         </nav>
+
+        <!-- MAIN CONTENT -->
         <main id="maincontent">
-            <section>
-                <h1 class="acctitle">My Accounts</h1>
+            <section aria-labelledby="summary-title">
+                <h1 class="acctitle" id="summary-title">My Accounts</h1>
                 <p class="acctitle">Manage all your financial accounts</p>
                 <div class="card">
                     <h3>Total Balance</h3>
                     <p id="TotalBalance-ILS">0.00 ILS</p>
                 </div>
             </section>
-            <section>
+            <section aria-labelledby="accounts-section-title">
                 <div class="account-header">
-                    <p class="section-title">My Accounts</p>
-                    <button id="addaccount">+ Add Account</button>
+                    <p class="section-title" id="accounts-section-title">My Accounts</p>
+                    <button id="addaccount" aria-label="Add New Account">+ Add Account</button>
                 </div>
-                <div class="modal">
+                <div class="modal" role="dialog" aria-modal="true" aria-label="Add Account Dialog">
                     <form class="account-form">
                         <label for="name">Account name</label>
                         <input type="text" id="name" name="name" required>
@@ -68,19 +78,19 @@
                         <button type="button" id="closeModal">Cancel</button>
                     </form>
                 </div>
-                <div class="account-details-modal">
+                <div class="account-details-modal" role="dialog" aria-modal="true" aria-labelledby="details-heading">
                     <div class="account-details">
-                        <h2>Account Details</h2>
+                        <h2 id="details-heading">Account Details</h2>
                         <div class="detail">
                             <span>Account Name</span>
                             <div class="value-row1">
                                 <p id="detail-name"></p>
-                                <button class="edit-field" data-field="name" type="button" id="edit-field-button1">
+                                <button class="edit-field" data-field="name" type="button" id="edit-field-button1" aria-label="Edit account name">
                                     <i data-lucide="pencil"></i>
                                 </button>
                             </div>
                             <div class="edit-row1">
-                                <input id="edit-name" type="text" class="hidden">
+                                <input id="edit-name" type="text" class="hidden" aria-label="Account name input">
                                 <button id="save-name-button" class="hidden">Save</button>
                                 <button id="cancel-name-button" class="hidden">Cancel</button>
                             </div>
@@ -89,12 +99,12 @@
                             <span>Account Type</span>
                             <div class="value-row2">
                                 <p id="detail-type"></p>
-                                <button class="edit-field" data-field="type" type="button" id="edit-field-button2">
+                                <button class="edit-field" data-field="type" type="button" id="edit-field-button2" aria-label="Edit account type">
                                     <i data-lucide="pencil"></i>
                                 </button>
                             </div>
                             <div class="edit-row2">
-                                <select id="edit-type" type="text" class="hidden">
+                                <select id="edit-type" type="text" class="hidden" aria-label="Account type selection">
                                     <option value="Checking">Checking</option>
                                     <option value="Savings">Savings</option>
                                     <option value="Cash">Cash</option>
@@ -111,12 +121,12 @@
                             <span>Currency</span>
                             <div class="value-row3">
                                 <p id="detail-currency"></p>
-                                <button class="edit-field" data-field="currency" type="button" id="edit-field-button3">
+                                <button class="edit-field" data-field="currency" type="button" id="edit-field-button3" aria-label="Edit currency">
                                     <i data-lucide="pencil"></i>
                                 </button>
                             </div>
                             <div class="edit-row3">
-                                <select id="edit-currency" type="text" class="hidden">
+                                <select id="edit-currency" type="text" class="hidden" aria-label="Currency selection">
                                     <option value="$">$</option>
                                     <option value="ILS">ILS</option>
                                 </select>
@@ -128,12 +138,12 @@
                             <span>Balance</span>
                             <div class="value-row4">
                                 <p id="detail-balance"></p>
-                                <button class="edit-field" data-field="balance" type="button" id="edit-field-button4">
+                                <button class="edit-field" data-field="balance" type="button" id="edit-field-button4" aria-label="Edit balance">
                                     <i data-lucide="pencil"></i>
                                 </button>
                             </div>
                             <div class="edit-row4">
-                                <input id="edit-balance" type="number" class="hidden">
+                                <input id="edit-balance" type="number" class="hidden" aria-label="Balance input">
                                 <button id="save-balance-button" class="hidden">Save</button>
                                 <button id="cancel-balance-button" class="hidden">Cancel</button>
                             </div>
@@ -144,7 +154,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="account-confirmdelete-modal">
+                <div class="account-confirmdelete-modal" role="dialog" aria-modal="true" aria-labelledby="deleteaccountHeader">
                     <div class="delete-account-confirmation">
                         <div class="delete-confirmation">
                             <h2 id="deleteaccountHeader">Delete Account?</h2>
@@ -160,23 +170,23 @@
                 <table class="accounts-table">
                     <thead>
                         <tr>
-                            <th>Account</th>
-                            <th>Type</th>
-                            <th>Currency</th>
-                            <th>Balance</th>
+                            <th scope="col">Account</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Currency</th>
+                            <th scope="col">Balance</th>
                         </tr>
                     </thead>
                     <tbody id="accounts-table-body"></tbody>
                 </table>
             </section>
-            <section>
-                <p class="section-title">Recent Account Activity</p>
+            <section aria-labelledby="activity-section-title">
+                <p class="section-title" id="activity-section-title">Recent Account Activity</p>
                 <table>
                     <thead>
                         <tr>
-                            <th>Account</th>
-                            <th>Activity</th>
-                            <th>Amount</th>
+                            <th scope="col">Account</th>
+                            <th scope="col">Activity</th>
+                            <th scope="col">Amount</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -1,59 +1,68 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Project MM F1</title>
-        <link rel="stylesheet" href="../Shared/shared.css">
-        <link rel="stylesheet" href="../Dashboard/dashboard.css">
-        <script src="https://unpkg.com/lucide@latest"></script>
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project MM F1</title>
+    <link rel="stylesheet" href="../Shared/shared.css">
+    <link rel="stylesheet" href="../Dashboard/dashboard.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
 
-    <body>
-        <nav class="sidebar">
+<!-- SINGLE SIDEBAR CONTAINER -->
+    <nav class="sidebar">
+        <div class="sidebarHeader">
             <button id="menuButton">☰</button>
-            <a href="../dashboard/dashboard.html">
-                <i data-lucide="house"></i>
-                Home
-            </a>
-            <a href="../Accounts/accounts.html">
-                <i data-lucide="wallet"></i>
-                Accounts
-            </a>
-            <a href="../Transactions/transactions.html">
-                <i data-lucide="arrow-left-right"></i>
-                Transactions
-            </a>
-            <a href="../About/about.html">
-                <i data-lucide="info"></i>
-                About
-            </a>
-        </nav>
-        <main id="maincontent">
-            <h1>Your personal Money Manager</h1>
-            <section>
-                <h2>Welcome back, Sir</h2>
-                <p>Money Manager helps you track your income, expenses, accounts, and financial goals in one simple place.
-</p>
-            </section>
-            <section class="cards">
-                <div class="card">
-                    <h3>Balance</h3>
-                    <p class="money">0$</p>
-                </div>
-                <div class="card">
-                    <h3>Income</h3>
-                    <p class="money">0$</p>
-                </div>
-                <div class="card">
-                    <h3>Expenses</h3>
-                    <p class="money">0$</p>
-                </div>
-            </section>
-            <footer>Money Manager</footer>
-        </main>
-        <script src="../Shared/shared.js"></script>
-        <script src="../Dashboard/dashboard.js"></script>
-        <script>
-            lucide.createIcons();
-        </script>
-    </body>
+            <span class="sidebar-title">Project MM</span>
+        </div>
+        <a href="../dashboard/dashboard.html" class="active">
+            <i data-lucide="house"></i>
+            <span class="link-text">Home</span>
+        </a>
+        <a href="../Accounts/accounts.html">
+            <i data-lucide="wallet"></i>
+            <span class="link-text">Accounts</span>
+        </a>
+        <a href="../Transactions/transactions.html">
+            <i data-lucide="arrow-left-right"></i>
+            <span class="link-text">Transactions</span>
+        </a>
+        <a href="../About/about.html">
+            <i data-lucide="info"></i>
+            <span class="link-text">About</span>
+        </a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main id="maincontent">
+        <h1>Your personal Money Manager</h1>
+        <section>
+            <h2>Welcome back, Sir</h2>
+            <p>Money Manager helps you track your income, expenses, accounts, and financial goals in one simple place.</p>
+        </section>
+        
+        <section class="cards">
+            <div class="card">
+                <h3>Balance</h3>
+                <p class="money">0$</p>
+            </div>
+            <div class="card">
+                <h3>Income</h3>
+                <p class="money">0$</p>
+            </div>
+            <div class="card">
+                <h3>Expenses</h3>
+                <p class="money">0$</p>
+            </div>
+        </section>
+        <footer>Money Manager</footer>
+    </main>
+
+    <script src="../Shared/shared.js"></script>
+    <script src="../Dashboard/dashboard.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
 </html>

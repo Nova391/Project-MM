@@ -1,87 +1,133 @@
 /* === SHARED STYLES === */
 
-
-
 /* === PAGE === */
-body
-{
+body {
     background-color: rgb(18, 12, 28);
+    margin: 0;
+    font-family: sans-serif;
 }
 
-
 /* === SIDEBAR === */
-.sidebar
-{
+.sidebar {
     position: fixed;
-    left: -250px;
+    left: 0;
     top: 0;
-    width: 250px;
+    width: 60px; /* Collapsed width: strictly fits icons */
     height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 30px;
-    gap: 70px;
+    padding: 20px 8px;
+    gap: 25px;
     background-color: rgb(35, 20, 50);
-    transition: left 0.5s;
-    box-shadow: inset;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
     box-sizing: border-box;
+    overflow: hidden; /* Hides text labels when collapsed */
+    z-index: 1000;
 }
-.sidebar a
-{
-    color: white;
+
+/* Expanded state class */
+.sidebar.hidden {
+    width: 250px;
+}
+
+/* === SIDEBAR HEADER === */
+.sidebarHeader {
     display: flex;
     align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    padding: 20px;
-    font-size: 20px;
+    gap: 15px;
+    white-space: nowrap;
 }
-.sidebar a:hover
-{
-    background-color: rgb(52, 38, 65);
+
+/* MENU BUTTON */
+#menuButton {
+    background-color: rgb(90, 65, 110);
+    border: none;
+    color: white;
+    min-width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SIDEBAR TITLE */
+.sidebar-title {
+    color: aliceblue;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.sidebar.hidden .sidebar-title {
+    opacity: 1;
+}
+
+/* === SIDEBAR LINKS === */
+.sidebar a {
+    color: white;
+    display: flex;
+    align-items: center; /* Locks icon and text to vertical middle */
+    gap: 20px;           /* Distance between icon and text */
+    text-decoration: none;
+    padding: 10px 12px;
+    font-size: 18px;
+    white-space: nowrap;
+    transition: background-color 0.2s;
     border-radius: 13px;
 }
-.sidebar.hidden
-{
-    left: 0px;
-    box-sizing: border-box;
+
+.sidebar a:hover {
+    background-color: rgb(52, 38, 65);
 }
-.sidebar svg
-{
+
+.sidebar a.active {
+    background-color: rgb(90, 65, 110); 
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(90, 65, 110, 0.4); 
+}
+
+.sidebar a.active svg {
+    stroke-width: 2.5px; 
+}
+
+/* Lucide Icon Sizing */
+.sidebar svg {
+    min-width: 20px;
+    min-height: 20px;
     width: 20px;
     height: 20px;
 }
 
-
-/* === SIDEBAR MENU BUTTON === */
-#menuButton 
-{
-    background-color: rgb(90, 65, 110);
-    right: -40px;
-    top: 20px;
-    overflow: visible;
-    position: absolute;
-    border-radius: 10px;
-    color: white;
+/* Link Text Visibility */
+.link-text {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
 }
 
+.sidebar.hidden .link-text {
+    opacity: 1;
+}
 
 /* === MAIN CONTENT === */
-main
-{
-    margin-left: 0px;
+main {
+    margin-left: 60px; /* Offset for collapsed sidebar */
+    padding: 30px;
     color: white;
-    transition: margin-left 0.5s;
-}
-main.shifted
-{
-    margin-left: 250px;
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+main.shifted {
+    margin-left: 250px; /* Offset for expanded sidebar */
+}
 
 /* === CARDS === */
-.card
-{
+.card {
     background-color: rgb(45, 30, 62);
     border-radius: 12px;
     border: 1px solid rgb(55, 45, 65);
@@ -92,35 +138,31 @@ main.shifted
     width: 450px;
 }
 
-
 /* === SECTIONS === */
-section
-{
+section {
     margin-bottom: 30px;
 }
 
-
-/* === TABELES === */
-table
-{
+/* === TABLES === */
+table {
     width: 100%;
     border-collapse: collapse;
 }
-td
-{
+
+td {
     padding: 15px;
     text-align: center;
 }
-tr:hover
-{
+
+tr:hover {
     background-color: rgb(57, 32, 80);
 }
-th
-{
+
+th {
     padding: 15px;
 }
-tbody tr
-{
+
+tbody tr {
     border-bottom: 1px solid rgb(65, 45, 80);
     border-top: 1px solid rgb(65, 45, 80);
 }

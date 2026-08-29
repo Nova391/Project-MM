@@ -55,9 +55,9 @@ def update_transaction(transaction):
     connection.commit()
     connection.close()
 
-def delete_transaction(transaction):
+def delete_transaction(transaction_id):
     connection = get_connection()
     cursor = connection.cursor()
-    cursor.execute("DELETE FROM transactions WHERE id = ?", (transaction.id,))
+    cursor.execute("DELETE FROM transactions WHERE id = ?", (transaction_id,))
     connection.commit()
     connection.close()
