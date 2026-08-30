@@ -17,10 +17,8 @@ def get_transaction(transaction_id):
     return transaction
 
 def add_transaction(transaction):
-    
     connection = get_connection()
     cursor = connection.cursor()
-
     cursor.execute("""
         INSERT INTO transactions
         (account_id, amount, type, category_id, date, description)
@@ -33,9 +31,7 @@ def add_transaction(transaction):
         transaction.date,
         transaction.description
     ))
-
     transaction.id = cursor.lastrowid
-
     connection.commit()
     connection.close()
 

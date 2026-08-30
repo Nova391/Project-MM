@@ -10,6 +10,9 @@
     display: flex;
     justify-content: space-between;
 }
+
+
+
 /* === ADD TRANSACTION === */
 
 
@@ -29,12 +32,13 @@
 {
     background-color: rgb(135, 100, 185);
 }
+
 /* === ADD TRANSACTION MODAL === */
-.AddTransactionsModal
+.AddTransactionsModal 
 {
     display: none;
 }
-.AddTransactionsModal.hidden
+.AddTransactionsModal.hidden 
 {
     position: fixed;
     width: 100vw;
@@ -44,26 +48,142 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(10, 5, 15, 0.65);
-
+    background-color: rgba(10, 5, 15, 0.75);
+    backdrop-filter: blur(4px); 
+    z-index: 1000;
 }
 
 /* === ADD TRANSACTION FORM === */
-.AddTransactionsForm
+.AddTransactionsForm 
 {
     display: none;
 }
-.AddTransactionsForm.hidden
+.AddTransactionsForm.hidden 
 {
-    border: 10px;
-    border-radius: 8px;
+    border: 1px solid rgb(65, 45, 80);
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     background-color: rgb(45, 30, 62);
-    border-color: rgb(65, 45, 80);
-    width: 500px;
-    height: auto;
-    padding: 50px;
+    width: 600px; 
+    padding: 60px;
+    box-sizing: border-box;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* === INPUT GROUPS === */
+.form-row 
+{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+.input-group 
+{
+    flex: 1;
+    flex-direction: column;
+    text-align: left;
+    gap: 8px;
+}
+.AddTransactionsForm label 
+{
+    color: rgb(210, 202, 220);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.AddTransactionsForm input[type="number"],
+.AddTransactionsForm input[type="text"],
+.AddTransactionsForm input[type="date"],
+.AddTransactionsForm select 
+{
+    padding: 12px 15px;
+    border: 1px solid rgb(65, 45, 80);
+    border-radius: 8px;
+    background-color: rgb(25, 17, 35);
+    color: rgb(235, 230, 245);
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+.AddTransactionsForm input:focus,
+.AddTransactionsForm select:focus 
+{
+    outline: none;
+    border-color: rgb(115, 85, 160);
+    box-shadow: 0 0 8px rgba(115, 85, 160, 0.4);
+}
+
+/* === INCOME/EXPENSE BOX === */
+.type-toggle-container 
+{
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    margin-top: 8px;
+}
+.type-toggle-container input[type="radio"] 
+{
+    display: none;
+}
+.type-toggle-container .type-box 
+{
+    flex: 1;
     text-align: center;
+    padding: 12px;
+    background-color: rgb(25, 17, 35);
+    border: 1px solid rgb(65, 45, 80);
+    border-radius: 8px;
+    color: rgb(180, 170, 190);
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    margin: 0;
+}
+.type-toggle-container input[type="radio"]:checked + .type-box 
+{
+    background-color: rgb(115, 85, 160);
+    border-color: rgb(135, 100, 185);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(115, 85, 160, 0.3);
+}
+
+/* === TRANSACTION BUTTONS === */
+.AddTransactionsForm button 
+{
+    padding: 14px 18px;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 5px;
+}
+
+/* === SUBMIT TRANSACTION BUTTON === */
+#submitTransaction 
+{
+    background-color: rgb(115, 85, 160);
+    border: none;
+}
+#submitTransaction:hover 
+{
+    background-color: rgb(135, 100, 185);
+    transform: translateY(-2px);
+}
+
+/* === CLOSE TRANSACTION FORM BUTTON === */
+#closeModal 
+{
+    background-color: transparent;
+    color: rgb(180, 170, 190);
+    border: 1px solid rgb(65, 45, 80);
+}
+#closeModal:hover 
+{
+    background-color: rgb(57, 32, 80);
+    color: white;
 }

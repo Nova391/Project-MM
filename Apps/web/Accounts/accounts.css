@@ -65,17 +65,17 @@
 /* === ADD ACCOUNT FORM === */
 .account-form
 {
-    border: 10px;
+    border: 1px solid rgb(65, 45, 80);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     background-color: rgb(45, 30, 62);
-    border-color: rgb(65, 45, 80);
     width: 500px;
     height: auto;
     padding: 50px;
     text-align: center;
+    box-sizing: border-box;
 }
 .account-form label
 {
