@@ -135,6 +135,7 @@ deleteAccountCancel.addEventListener("click", function (event) {
 })
 
 
+
 /* ===== EDIT ACCOUNT ===== */
 
 

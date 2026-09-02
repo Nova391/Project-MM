@@ -10,32 +10,30 @@
 </head>
 <body>
 
-    <!-- SINGLE SIDEBAR CONTAINER -->
     <nav class="sidebar">
         <div class="sidebarHeader">
             <button id="menuButton">☰</button>
             <span class="sidebar-title">Project MM</span>
         </div>
 
-        <a href="/dashboard/dashboard.html">
+        <a href="../dashboard/dashboard.html">
             <i data-lucide="house"></i>
             <span class="link-text">Home</span>
         </a>
-        <a href="/Accounts/accounts.html">
+        <a href="../Accounts/accounts.html">
             <i data-lucide="wallet"></i>
             <span class="link-text">Accounts</span>
         </a>
-        <a href="/Transactions/transactions.html" class="active">
+        <a href="../Transactions/transactions.html" class="active">
             <i data-lucide="arrow-left-right"></i>
             <span class="link-text">Transactions</span>
         </a>
-        <a href="/About/about.html">
+        <a href="../About/about.html">
             <i data-lucide="info"></i>
             <span class="link-text">About</span>
         </a>
     </nav>
 
-    <!-- MAIN CONTENT -->
     <main id="maincontent">
         <section>
             <div class="transactionsHeader">
@@ -43,7 +41,7 @@
                 <button id="AddTransaction">+ New Transaction</button>
             </div>
             <div class="AddTransactionsModal">
-                <div class="AddTransactionsForm">
+                <form class="AddTransactionsForm">
                     <div class="input-group">
                         <label>Transaction Type</label>
                         <div class="type-toggle-container">
@@ -56,10 +54,12 @@
 
                     <label for="account">Account</label>
                     <select id="account" name="account" required></select>
-
+                    
                     <label for="amount">Amount</label>
-                    <input type="number" id="amount" name="amount" step="0.01" required>
-
+                    <div class="amountThings">
+                        <input type="number" id="amount" name="amount" step="0.01" required>
+                        <span id="TransactionCurrency"></span>
+                    </div>
 
                     <label for="category">Category</label>
                     <select id="category" name="Category" required>
@@ -71,9 +71,9 @@
                     <label for="description">Description</label>
                     <input type="text" id="description" name="description" required>
 
-                    <button type="submit" id="submitTransaction">Add Transaction</button>
+                    <button type="button" id="submitTransaction">Add Transaction</button>
                     <button type="button" id="closeModal">Cancel</button>
-                </div>
+                </form>
             </div>
         </section>
         
@@ -82,15 +82,15 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Account</th>
                         <th>Type</th>
                         <th>Description</th>
                         <th>Category</th>
                         <th>Date</th>
-                        <th>Account</th>
                         <th>Amount</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody id="transactionsBody"></tbody>
             </table>
         </section>
     </main>

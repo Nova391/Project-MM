@@ -22,9 +22,11 @@ def read_transactions():
 
 @router.post("/transactions")
 def save_transaction(data: TransactionRequest):
+    current_balance = get_account_balance(data.account_id)
+    if data.type.lower() == "expense" and data.amount > current_balance:
+        return {"error": "Insufficient balance"}
     new_transaction = Transaction(data.account_id, data.amount, data.type, data.category_id, data.date, data.description)
     add_transaction(new_transaction)
-    current_balance = get_account_balance(data.account_id)
     if data.type.lower() == "income":
         new_balance = current_balance + data.amount
     else:

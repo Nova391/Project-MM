@@ -187,3 +187,38 @@
     background-color: rgb(57, 32, 80);
     color: white;
 }
+
+/* === DELETE NUMBER ARROWS === */
+input[type="number"] 
+{
+    appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button 
+{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* === AMOUNT COUNTANIR === */
+.amountThings
+{
+    position: relative;
+}
+#amount
+{
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 55px;
+}
+#TransactionCurrency
+{
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(150, 135, 170);
+    font-size: 14px;
+    pointer-events: none;
+}

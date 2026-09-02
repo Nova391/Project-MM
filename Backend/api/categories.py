@@ -23,30 +23,19 @@ def read_category(id: int):
 
 @router.post("/categories")
 def save_category(data: CategoryRequest):
-    category = Category(
-        data.name,
-        data.type
-    )
+    category = Category(data.name, data.type)
     return add_category(category)
 
 
 @router.put("/categories/{id}")
 def edit_category(id: int, data: CategoryRequest):
-    category = Category(
-        data.name,
-        data.type,
-        id
-    )
+    category = Category(data.name, data.type, id)
     update_category(category)
     return category.id
 
 
 @router.delete("/categories/{id}")
 def remove_category(id: int):
-    category = Category(
-        "",
-        "",
-        id
-    )
+    category = Category("", "", id)
     delete_category(category)
     return {"message": "Category deleted"}

@@ -3,7 +3,7 @@ from Backend.DataBase.connection import get_connection
 def get_transactions():
     connection = get_connection()
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM transactions")
+    cursor.execute("""SELECT transactions.type, transactions.amount, accounts.name, categories.name, transactions.date, transactions.description FROM transactions JOIN accounts ON transactions.account_id = accounts.id JOIN categories ON transactions.category_id = categories.id""")
     transactions = cursor.fetchall()
     connection.close()
     return transactions
