@@ -1,3 +1,4 @@
+let allAccounts = [];
 /* === ADD ACCOUNT MODAL OPEN === */
 const addaccount = document.querySelector("#addaccount");
 const accountForm = document.querySelector(".account-form")
@@ -32,6 +33,7 @@ function loadAccounts() {
     fetch("http://127.0.0.1:8000/accounts")
         .then(response => response.json())
         .then(data => {
+            allAccounts = data;
             CalculateTotalBalance(data)
             const tableBody = document.getElementById("accounts-table-body")
             tableBody.innerHTML = ""
@@ -72,6 +74,7 @@ function loadAccounts() {
 
                 tableBody.appendChild(row)
             })
+            loadRecentTransactions()
         })
 }
 
@@ -316,4 +319,34 @@ function CalculateTotalBalance(accounts) {
     })
     TotalBalanceILS.textContent = `${totalBalance.toFixed(2)} ILS`
 }
+
+/* === RECENT ACCOUNT ACTIVITY === */
+const recentActivityBody = document.querySelector("#recentActivityBody")
+function loadRecentTransactions() {
+    fetch("http://127.0.0.1:8000/transactions")
+        .then(response => response.json())
+        .then(transactions => {
+            recentActivityBody.innerHTML = ""
+            transactions
+                .sort((a, b) => new Date(b[4]) - new Date(a[4]))
+                .slice(0, 5)
+                .forEach(transaction => {
+                    const row = document.createElement("tr")
+                    const accountCell = document.createElement("td")
+                    const activityCell = document.createElement("td")
+                    const amountCell = document.createElement("td")
+                    accountCell.textContent = transaction[2]
+                    activityCell.textContent = transaction[3]
+                    const sign = transaction[0].toLowerCase() === "income" ? "+" : "-"
+                    const account = allAccounts.find(account => account[1] === transaction[2])
+                    const currency = account ? account[3] : ""
+                    amountCell.textContent = `${sign} ${transaction[1]} ${currency}`
+                    row.appendChild(accountCell)
+                    row.appendChild(activityCell)
+                    row.appendChild(amountCell)
+                    recentActivityBody.appendChild(row)
+                })
+        })
+}
+
 loadAccounts()

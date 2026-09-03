@@ -18,7 +18,7 @@
 
         <a href="../dashboard/dashboard.html">
             <i data-lucide="house"></i>
-            <span class="link-text">Home</span>
+            <span class="link-text">Dashboard</span>
         </a>
         <a href="../Accounts/accounts.html">
             <i data-lucide="wallet"></i>
@@ -61,7 +61,10 @@
                         <span id="TransactionCurrency"></span>
                     </div>
 
-                    <label for="category">Category</label>
+                    <div class="CategoryContainer">
+                        <label for="category">Category</label>
+                        <button type="button" id="AddCategory">+</button>
+                    </div>
                     <select id="category" name="Category" required>
                     </select>
 
@@ -74,11 +77,40 @@
                     <button type="button" id="submitTransaction">Add Transaction</button>
                     <button type="button" id="closeModal">Cancel</button>
                 </form>
+                <div class="CategoryModal">
+                    <form class="CategoryForm">
+                        <h2>Add Category</h2>
+
+                        <label for="CategoryName">Category Name</label>
+                        <input type="text" id="CategoryName">
+
+                        <div class="CategoryButtons">
+                            <button type="button" id="CancelAddCategory">Cancel</button>
+                            <button type="button" id="submitCategory">Save</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
         
         <section>
-            <h2>Recent Transactions</h2>
+            <div class="transactionFilters">
+                <input type="text" id="transactionsSearch" placeholder="Search transactions...">
+
+                <select id="accountFilter">
+                    <option value="">All Accounts</option>
+                </select>
+
+                <select id="typeFilter">
+                    <option value="">All Types</option>
+                    <option value="Income">Income</option>
+                    <option value="Expense">Expense</option>
+                </select>
+
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                </select>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -92,6 +124,56 @@
                 </thead>
                 <tbody id="transactionsBody"></tbody>
             </table>
+            <div class="DetailsModal">
+                <form class="DetailsForm">
+                    <h2>Transaction Details</h2>
+                    <div class="detail-row">
+                        <span>Transaction Type</span>
+                        <strong id="typeDetail"></strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Account</span>
+                        <strong id="accountDetail"></strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Amount</span>
+                        <strong id="amountDetail"></strong>
+                        <span id="DetailCurrency"></span>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Category</span>
+                        <strong id="categoryDetail"></strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Date</span>
+                        <strong id="dateDetail"></strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Description</span>
+                        <strong id="descriptionDetail"></strong>
+                    </div>
+
+                    <div class="DetailButtons">
+                        <button type="button" id="closeDetails">Close</button>
+                        <button type="button" id="DeleteTransaction">Delete Transaction</button>
+                    </div>
+                    <div class="DeleteModal">
+                        <div class="DeleteForm">
+                            <span>Are you sure you want to delete this transaction?</span>
+                            <span>This action cannot be undone.</span>
+                            <div class="deleteButtons">
+                                <button id="CancelDelete">Cancel</button>
+                                <button id="Delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </section>
     </main>
 

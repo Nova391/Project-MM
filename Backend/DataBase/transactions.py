@@ -3,7 +3,7 @@ from Backend.DataBase.connection import get_connection
 def get_transactions():
     connection = get_connection()
     cursor = connection.cursor()
-    cursor.execute("""SELECT transactions.type, transactions.amount, accounts.name, categories.name, transactions.date, transactions.description FROM transactions JOIN accounts ON transactions.account_id = accounts.id JOIN categories ON transactions.category_id = categories.id""")
+    cursor.execute("""SELECT transactions.type, transactions.amount, accounts.name, categories.name, transactions.date, transactions.description, transactions.id, transactions.account_id FROM transactions JOIN accounts ON transactions.account_id = accounts.id JOIN categories ON transactions.category_id = categories.id""")
     transactions = cursor.fetchall()
     connection.close()
     return transactions
@@ -54,6 +54,30 @@ def update_transaction(transaction):
 def delete_transaction(transaction_id):
     connection = get_connection()
     cursor = connection.cursor()
-    cursor.execute("DELETE FROM transactions WHERE id = ?", (transaction_id,))
+    cursor.execute(
+        "SELECT account_id, amount, type FROM transactions WHERE id = ?",
+        (transaction_id,)
+    )
+    transaction = cursor.fetchone()
+    account_id = transaction[0]
+    amount = transaction[1]
+    transaction_type = transaction[2]
+    cursor.execute(
+        "SELECT balance FROM accounts WHERE id = ?",
+        (account_id,)
+    )
+    balance = cursor.fetchone()[0]
+    if transaction_type.lower() == "income":
+        new_balance = balance - amount
+    else:
+        new_balance = balance + amount
+    cursor.execute(
+        "UPDATE accounts SET balance = ? WHERE id = ?",
+        (new_balance, account_id)
+    )
+    cursor.execute(
+        "DELETE FROM transactions WHERE id = ?",
+        (transaction_id,)
+    )
     connection.commit()
     connection.close()

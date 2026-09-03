@@ -222,3 +222,349 @@ input[type="number"]::-webkit-outer-spin-button
     font-size: 14px;
     pointer-events: none;
 }
+
+/* === CATEGORY === */
+.CategoryModal
+{
+    display: none;
+}
+.CategoryModal.hidden
+{
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(10, 5, 15, 0.65);
+    backdrop-filter: blur(3px);
+    z-index: 1100;
+}
+.CategoryForm
+{
+    display: none;
+}
+.CategoryForm.hidden
+{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background-color: rgb(45, 30, 62);
+    border: 1px solid rgb(65, 45, 80);
+    border-radius: 8px;
+    width: 350px;
+    padding: 35px;
+    box-sizing: border-box;
+}
+#AddCategory 
+{
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    background-color: rgb(115, 85, 160);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 8px;
+}
+.CategoryContainer
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#AddCategory:hover 
+{
+    background-color: rgb(135, 100, 185);
+}
+.CategoryForm h2 
+{
+    color: rgb(235, 230, 245);
+    margin: 0 0 5px 0;
+    text-align: center;
+}
+.CategoryForm label 
+{
+    color: rgb(210, 202, 220);
+    font-size: 15px;
+    font-weight: 600;
+}
+.CategoryForm input
+{
+    background-color: rgb(25, 17, 35);
+    color: rgb(235, 230, 245);
+
+    border: 1px solid rgb(65, 45, 80);
+    border-radius: 7px;
+
+    padding: 10px;
+    font-size: 14px;
+}
+.CategoryForm input:focus 
+{
+    outline: none;
+    border-color: rgb(115, 85, 160);
+}
+.CategoryButtons 
+{
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+.CategoryButtons button 
+{
+    flex: 1;
+    padding: 10px 18px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+#submitCategory 
+{
+    background-color: rgb(115, 85, 160);
+    color: white;
+    border: none;
+}
+#submitCategory:hover 
+{
+    background-color: rgb(135, 100, 185);
+}
+#CancelAddCategory 
+{
+    background-color: transparent;
+    color: rgb(180, 170, 190);
+    border: 1px solid rgb(65, 45, 80);
+}
+#CancelAddCategory:hover 
+{
+    background-color: rgb(57, 32, 80);
+    color: white;
+}
+
+/* === FILTER TRANSACTIONS === */
+.transactionFilters 
+{
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+    align-items: center;
+}
+
+.transactionFilters input,
+.transactionFilters select 
+{
+    background-color: rgb(25, 17, 35);
+    color: rgb(235, 230, 245);
+    border: 1px solid rgb(65, 45, 80);
+    border-radius: 7px;
+    padding: 10px 12px;
+    font-size: 14px;
+    outline: none;
+}
+
+.transactionFilters input 
+{
+    flex: 1;
+}
+
+.transactionFilters input:focus,
+.transactionFilters select:focus 
+{
+    border-color: rgb(115, 85, 160);
+}
+
+.transactionFilters select 
+{
+    cursor: pointer;
+}
+
+/* === TRANSACTIONS DETAILS === */
+.DetailsModal 
+{
+    display: none;
+}
+.DetailsModal.hidden
+{
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3px);
+    z-index: 1000;
+}
+.DetailsForm
+{
+    display: none;
+}
+.DetailsForm.hidden
+{
+    display: flex;
+    width: 450px;
+    padding: 28px;
+    background-color: rgb(35, 20, 50);
+    border: 1px solid rgb(65, 45, 80);
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    color: rgb(235, 230, 245);
+    flex-direction: column;
+    gap: 18px;
+}
+.DetailsForm h2 
+{
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 600;
+}
+.detail-row 
+{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgb(65, 45, 80);
+}
+.detail-row span 
+{
+    width: 130px;
+    color: rgb(150, 135, 170);
+    font-size: 13px;
+}
+.detail-row strong 
+{
+    color: rgb(235, 230, 245);
+    font-size: 15px;
+    font-weight: 500;
+}
+.DetailButtons 
+{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+.DetailButtons button 
+{
+    flex: 1;
+    padding: 11px 16px;
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    cursor: pointer;
+}
+#closeDetails 
+{
+    background-color: rgb(65, 45, 80);
+    color: rgb(235, 230, 245);
+}
+#closeDetails:hover 
+{
+    background-color: rgb(80, 58, 98);
+}
+#DeleteTransaction 
+{
+    background-color: rgb(120, 45, 55);
+    color: white;
+}
+#DeleteTransaction:hover 
+{
+    background-color: rgb(145, 55, 65);
+}
+#DetailCurrency 
+{
+    color: rgb(150, 135, 170);
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: -18px;
+}
+
+.DeleteModal
+{
+    display: none;
+}
+.DeleteModal.hidden
+{
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
+    backdrop-filter: blur(3px);
+
+}
+.DeleteForm
+{
+    display: none;
+}
+.DeleteForm.hidden
+{
+    display: flex;
+    width: 360px;
+    padding: 25px;
+    background-color: rgb(35, 20, 50);
+    border: 1px solid rgb(65, 45, 80);
+    border-radius: 12px;
+    color: rgb(235, 230, 245);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+.DeleteForm span:first-child 
+{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.DeleteForm span:nth-child(2) 
+{
+    color: rgb(150, 135, 170);
+    font-size: 14px;
+}
+
+.deleteButtons 
+{
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.deleteButtons button 
+{
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#Delete 
+{
+    background-color: rgb(120, 45, 55);
+    color: white;
+}
+
+#Delete:hover 
+{
+    background-color: rgb(145, 55, 65);
+}
+
+#CancelDelete 
+{
+    background-color: rgb(65, 45, 80);
+    color: rgb(235, 230, 245);
+}
+
+#CancelDelete:hover 
+{
+    background-color: rgb(80, 58, 98);
+}
