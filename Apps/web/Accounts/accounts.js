@@ -308,17 +308,23 @@ CancelBalanceButton.addEventListener("click", function (event) {
 
 /* === TOTAL BALANCE === */
 const TotalBalanceILS = document.querySelector("#TotalBalance-ILS")
+const TotalBalanceUSD = document.querySelector("#TotalBalance-USD")
 function CalculateTotalBalance(accounts) {
-    let totalBalance = 0
+    let totalILSBalance = 0
+    let totalUSDBalance = 0
     accounts.forEach(account => {
         const currency = account[3]
         const balance = Number(account[4])
         if (currency === "ILS") {
-            totalBalance += balance
+            totalILSBalance += balance
         }
-    })
-    TotalBalanceILS.textContent = `${totalBalance.toFixed(2)} ILS`
-}
+        else if (currency === "USD") {
+            totalUSDBalance += balance
+        }
+        })
+        TotalBalanceILS.textContent = `₪${totalILSBalance.toFixed(2)}`
+        TotalBalanceUSD.textContent = `$${totalUSDBalance.toFixed(2)}`
+    }
 
 /* === RECENT ACCOUNT ACTIVITY === */
 const recentActivityBody = document.querySelector("#recentActivityBody")

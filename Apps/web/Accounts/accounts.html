@@ -36,11 +36,35 @@
 
         <main id="maincontent">
             <section aria-labelledby="summary-title">
-                <h1 class="acctitle" id="summary-title">My Accounts</h1>
-                <p class="acctitle">Manage all your financial accounts</p>
-                <div class="card">
-                    <h3>Total Balance</h3>
-                    <p id="TotalBalance-ILS">0.00 ILS</p>
+                <header class="accounts-page-header">
+                    <h1>Accounts</h1>
+                    <p>View and manage your financial accounts</p>
+                </header>
+
+                <div class="balance-section">
+                    <div class="balance-heading">
+                        <h2>Balance</h2>
+                        <span>Current balances</span>
+                    </div>
+                    <div class="balance-cards">
+                        <div class="balance-card">
+                            <div class="balance-card-top">
+                                <span>ILS</span>
+                                <span>₪</span>
+                            </div>
+                            <p id="TotalBalance-ILS">₪0.00</p>
+                            <small>Palestinian Shekel</small>
+                        </div>
+                        
+                        <div class="balance-card">
+                            <div class="balance-card-top">
+                                <span>USD</span>
+                                <span>$</span>
+                            </div>
+                            <p id="TotalBalance-USD">$0.00</p>
+                            <small>US Dollar</small>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section aria-labelledby="accounts-section-title">
@@ -66,7 +90,7 @@
 
                         <label for="currency">Currency</label>
                         <select id="currency" name="currency">
-                            <option value="$">$</option>
+                            <option value="USD">USD</option>
                             <option value="ILS">ILS</option>
                         </select>
                     

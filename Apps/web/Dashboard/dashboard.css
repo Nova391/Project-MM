@@ -1,10 +1,332 @@
-.cards
+/* === DASHBOARD HEADER === */
+.dashboardHeader 
+{
+    margin-bottom: 35px;
+    border-bottom: 1px solid rgba(115, 85, 160, 0.18);
+    padding-bottom: 24px;
+    text-align: center;
+}
+.dashboardHeader h1 
+{
+    margin: 0;
+    color: rgb(235, 230, 245);
+    font-size: 32px;
+    font-weight: 700;
+}
+.dashboardHeader h2 
+{
+    margin: 8px 0 4px;
+    color: rgb(210, 202, 220);
+    font-size: 20px;
+    font-weight: 600;
+}
+.dashboardHeader p 
+{
+    margin: 0;
+    color: rgb(150, 140, 165);
+    font-size: 14px;
+}
+
+/* === CARDS === */
+.cards 
 {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.8fr);
     gap: 20px;
 }
-.money
+
+/* === MAIN CARD === */
+.MainCard 
 {
-    color: rgb(235, 230, 240);
+    width: 100%;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-width: none;
+    min-height: 230px;
+    margin: 0 auto;
+    padding: 30px 34px;
+    background: linear-gradient(
+        135deg,
+        rgb(48, 32, 67),
+        rgb(39, 26, 54)
+    );
+    border: 1px solid rgba(115, 85, 160, 0.35);
+    border-radius: 18px;
+    box-sizing: border-box;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.MainCard:hover 
+{
+    transform: translateY(-4px);
+    border-color: rgba(115, 85, 160, 0.55);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+}
+.MainCard h3 
+{
+    margin: 0;
+    color: rgb(180, 170, 195);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+#totalBalance 
+{
+    margin: 30px 0;
+    color: rgb(245, 240, 250);
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.SelectCurrency 
+{
+    display: flex;
+    justify-content: flex-end;
+}
+.SelectCurrency select 
+{
+    min-width: 90px;
+    padding: 9px 12px;
+    background-color: rgb(25, 17, 35);
+    color: rgb(220, 210, 230);
+    border: 1px solid rgb(75, 55, 95);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+}
+.SelectCurrency select:hover 
+{
+    border-color: rgb(115, 85, 160);
+}
+.SelectCurrency select:focus 
+{
+    border-color: rgb(115, 85, 160);
+}
+#balanceMeta
+{
+    margin: 0;
+    color: rgb(125, 115, 140);
+    font-size: 11px;
+}
+.balance-bottom 
+{
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid rgba(115, 85, 160, 0.18);
+}
+.balance-icon 
+{
+    position: absolute;
+    top: 22px;
+    right: 24px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(115, 85, 160, 0.25);
+    border-radius: 9px;
+    color: rgb(160, 140, 185);
+    background: rgba(115, 85, 160, 0.08);
+}
+.balance-icon svg 
+{
+    width: 18px;
+    height: 18px;
+}
+
+
+/* === MONTHLY MOVEMENT CARDS === */
+.MonthlyMovementCards 
+{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+}
+.MonthlyIncomeCard,
+.MonthlyExpensesCard 
+{
+    flex: 1;
+    min-height: 0;
+    padding: 26px 28px;
+    background-color: rgb(45, 30, 62);
+    border: 1px solid rgba(115, 85, 160, 0.28);
+    border-radius: 14px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+.MonthlyIncomeCard h2,
+.MonthlyExpensesCard h2 
+{
+    margin: 0 0 10px;
+    color: rgb(175, 165, 190);
+    font-size: 14px;
+    font-weight: 600;
+}
+#monthlyIncome 
+{
+    margin: 0;
+    color: rgb(130, 220, 160);
+    font-size: 28px;
+    font-weight: 700;
+}
+#monthlyExpenses 
+{
+    margin: 0;
+    color: rgb(240, 130, 130);
+    font-size: 28px;
+    font-weight: 700;
+}
+.MonthlyIncomeCard:hover,
+.MonthlyExpensesCard:hover 
+{
+    transform: translateY(-3px);
+    border-color: rgba(115, 85, 160, 0.55);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+}
+.MonthlyIncomeCard p,
+.MonthlyExpensesCard p 
+{
+    font-size: 30px;
+}
+
+
+
+/* === QUICK ACTIONS === */
+.quick-actions 
+{
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+.action-btn 
+{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    background-color: rgb(45, 30, 62);
+    border: 1px solid rgba(115, 85, 160, 0.28);
+    border-radius: 12px;
+    color: rgb(210, 202, 220);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.action-btn:hover 
+{
+    background-color: rgb(65, 45, 85);
+    border-color: rgba(115, 85, 160, 0.6);
+}
+.action-btn i 
+{
+    width: 18px;
+    height: 18px;
+}
+
+/* === RECENT TRANSACTIONS === */
+.recent-transactions 
+{
+    margin-top: 35px;
+    margin-bottom: 30px;
+    background-color: rgb(35, 22, 48);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(115, 85, 160, 0.25);
+}
+.section-header 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.section-header h3 
+{
+    margin: 0;
+    color: rgb(235, 230, 245);
+    font-size: 18px;
+}
+.view-all 
+{
+    color: rgb(160, 140, 185);
+    text-decoration: none;
+    font-size: 13px;
+}
+.view-all:hover 
+{
+    color: rgb(210, 202, 220);
+}
+.transaction-item 
+{
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(115, 85, 160, 0.15);
+}
+.transaction-item:last-child 
+{
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.tx-icon 
+{
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+}
+.tx-icon.expense 
+{ 
+    background: rgba(240, 130, 130, 0.1); color: rgb(240, 130, 130); 
+}
+.tx-icon.income 
+{ 
+    background: rgba(130, 220, 160, 0.1); color: rgb(130, 220, 160); 
+}
+.tx-details h4 
+{
+    margin: 0 0 4px 0;
+    color: rgb(210, 202, 220);
+    font-size: 15px;
+}
+.tx-details p 
+{
+    margin: 0;
+    color: rgb(125, 115, 140);
+    font-size: 12px;
+}
+.tx-amount 
+{
+    margin-left: auto;
+    font-weight: 600;
+    font-size: 16px;
+}
+.tx-amount.negative 
+{ 
+    color: rgb(240, 130, 130); 
+}
+.tx-amount.positive 
+{ 
+    color: rgb(130, 220, 160); 
 }

@@ -10,10 +10,9 @@
 </head>
 <body>
 
-<!-- SINGLE SIDEBAR CONTAINER -->
     <nav class="sidebar">
         <div class="sidebarHeader">
-            <button id="menuButton">☰</button>
+            <button id="menuButton" aria-label="Toggle Navigation">☰</button>
             <span class="sidebar-title">Project MM</span>
         </div>
         <a href="../dashboard/dashboard.html" class="active">
@@ -34,26 +33,69 @@
         </a>
     </nav>
 
-    <!-- MAIN CONTENT -->
     <main id="maincontent">
-        <h1>Your personal Money Manager</h1>
-        <section>
-            <h2>Welcome back, Sir</h2>
-            <p>Money Manager helps you track your income, expenses, accounts, and financial goals in one simple place.</p>
+        <section class="dashboardHeader">
+            <h1>Dashboard</h1>
+            <h2>Welcome, Sir</h2>
+            <p>Here's your financial overview.</p>
         </section>
         
         <section class="cards">
-            <div class="card">
-                <h3>Balance</h3>
-                <p class="money">0$</p>
+            <div class="MainCard">
+                <div class="balance-icon">
+                    <i data-lucide="wallet"></i>
+                </div>
+                <h3>Total Balance</h3>
+                <p id="totalBalance">₪0.00</p>
+                <div class="balance-bottom">
+                    <p id="balanceMeta">2 currencies · 5 accounts</p>
+                    <div class="SelectCurrency">
+                        <select id="balanceCurrency">
+                            <option value="ILS">ILS</option>
+                            <option value="USD">USD</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Income</h3>
-                <p class="money">0$</p>
+            <div class="MonthlyMovementCards">
+                <div class="MonthlyIncomeCard">
+                    <h2>Monthly Income</h2>
+                    <p id="monthlyIncome">+₪0.00</p>
+                </div>
+                <div class="MonthlyExpensesCard">
+                    <h2>Monthly Expenses</h2>
+                    <p id="monthlyExpenses">-₪0.00</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>Expenses</h3>
-                <p class="money">0$</p>
+        </section>
+        <section class="quick-actions">
+            <button class="action-btn"><i data-lucide="plus"></i> Add Income</button>
+            <button class="action-btn"><i data-lucide="minus"></i> Add Expense</button>
+            <button class="action-btn"><i data-lucide="send"></i> Transfer</button>
+        </section>
+
+        <section class="recent-transactions">
+            <div class="section-header">
+                <h3>Recent Activity</h3>
+                <a href="../Transactions/transactions.html" class="view-all">View All</a>
+            </div>
+            <div class="transaction-list">
+                <div class="transaction-item">
+                    <div class="tx-icon expense"><i data-lucide="shopping-cart"></i></div>
+                    <div class="tx-details">
+                        <h4>Groceries</h4>
+                        <p>Today, 2:30 PM</p>
+                    </div>
+                    <div class="tx-amount negative">-₪350.00</div>
+                </div>
+                <div class="transaction-item">
+                    <div class="tx-icon income"><i data-lucide="briefcase"></i></div>
+                    <div class="tx-details">
+                        <h4>Salary</h4>
+                        <p>Yesterday</p>
+                    </div>
+                    <div class="tx-amount positive">+₪8,500.00</div>
+                </div>
             </div>
         </section>
         <footer>Money Manager</footer>

@@ -1,7 +1,26 @@
 /* === PAGE TITLE === */
-.acctitle
+.accounts-page-header 
 {
     text-align: center;
+    padding: 12px 0 26px;
+    margin-bottom: 38px;
+    border-bottom: 1px solid rgba(115, 85, 160, 0.18);
+}
+.accounts-page-header h1 
+{
+    margin: 0;
+    color: rgb(235, 230, 245);
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+.accounts-page-header p 
+{
+    margin: 8px 0 0;
+    color: rgb(150, 140, 165);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
 }
 
 /* === TABLE HEADER === */
@@ -569,4 +588,93 @@
 {
     background-color: rgb(57, 32, 80);
     color: white;
+}
+
+/* === BALANCE SECTION === */
+.balance-section 
+{
+    margin-bottom: 45px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(115, 85, 160, 0.18);
+}
+.balance-heading 
+{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.balance-heading h2 
+{
+    margin: 0;
+    color: rgb(235, 230, 245);
+    font-size: 22px;
+    font-weight: 600;
+}
+.balance-heading span 
+{
+    color: rgb(135, 120, 150);
+    font-size: 13px;
+}
+
+/* === BALANCE CARDS === */
+.balance-cards 
+{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+.balance-card 
+{
+    position: relative;
+    min-height: 145px;
+    padding: 22px 24px;
+    background: rgb(45, 30, 62);
+    border: 1px solid rgb(65, 45, 80);
+    border-radius: 12px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.balance-card:hover 
+{
+    transform: translateY(-2px);
+    border-color: rgb(115, 85, 160);
+}
+
+/* === CARD TOP === */
+.balance-card-top 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.balance-card-top span:first-child 
+{
+    color: rgb(180, 170, 195);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.balance-card-top span:last-child 
+{
+    color: rgb(115, 85, 160);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* === AMOUNT === */
+.balance-card p 
+{
+    margin: 20px 0 5px;
+    color: rgb(245, 240, 250);
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+}
+
+/* === CURRENCY NAME === */
+.balance-card small 
+{
+    color: rgb(145, 135, 160);
+    font-size: 12px;
 }
