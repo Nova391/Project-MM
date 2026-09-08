@@ -12,7 +12,7 @@ body {
     position: fixed;
     left: 0;
     top: 0;
-    width: 60px; /* Collapsed width: strictly fits icons */
+    width: 60px; 
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@ body {
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
     box-sizing: border-box;
-    overflow: hidden; /* Hides text labels when collapsed */
+    overflow: hidden; 
     z-index: 1000;
 }
 
@@ -71,8 +71,8 @@ body {
 .sidebar a {
     color: white;
     display: flex;
-    align-items: center; /* Locks icon and text to vertical middle */
-    gap: 20px;           /* Distance between icon and text */
+    align-items: center;
+    gap: 20px;
     text-decoration: none;
     padding: 10px 12px;
     font-size: 18px;
@@ -116,14 +116,14 @@ body {
 
 /* === MAIN CONTENT === */
 main {
-    margin-left: 60px; /* Offset for collapsed sidebar */
+    margin-left: 60px; 
     padding: 30px;
     color: white;
     transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 main.shifted {
-    margin-left: 250px; /* Offset for expanded sidebar */
+    margin-left: 250px;
 }
 
 /* === CARDS === */
@@ -165,4 +165,78 @@ th {
 tbody tr {
     border-bottom: 1px solid rgb(65, 45, 80);
     border-top: 1px solid rgb(65, 45, 80);
+}
+
+
+.logout-button {
+    color: white;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 10px 12px;
+
+    font-size: 18px;
+
+    background: none;
+    border: none;
+
+    border-radius: 13px;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    text-align: left;
+
+    transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+    background-color: rgb(52, 38, 65);
+}
+
+.logout-button svg {
+    min-width: 20px;
+    min-height: 20px;
+
+    width: 20px;
+    height: 20px;
+}
+
+/* === USER INFO === */
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    color: white;
+}
+
+.user-avatar {
+    min-width: 20px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-avatar svg {
+    width: 20px;
+    height: 20px;
+}
+
+#currentUsername {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.sidebar.hidden #currentUsername {
+    opacity: 1;
 }

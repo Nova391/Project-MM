@@ -1,39 +1,151 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Cookie
 from pydantic import BaseModel
-from fastapi.middleware.cors import CORSMiddleware
 
-from Backend.DataBase.transactions import get_transaction, get_transactions, add_transaction, update_transaction, delete_transaction
+from Backend.Auth.auth import get_current_user
+
+from Backend.DataBase.transactions import (
+    get_transaction,
+    get_transactions,
+    add_transaction,
+    update_transaction,
+    delete_transaction
+)
+
 from Backend.Logic.transactions import Transaction
-from Backend.DataBase.account import get_account_balance, update_balance
+
 
 router = APIRouter()
 
+
 class TransactionRequest(BaseModel):
     account_id: int
-    amount: int
+    amount: float
     type: str
     category_id: int
-    date:str
+    date: str
     description: str
 
+
 @router.get("/transactions")
-def read_transactions():
-    return get_transactions()
+def read_transactions(
+    session: str | None = Cookie(default=None)
+):
+
+    user_id = get_current_user(session)
+
+    return get_transactions(user_id)
+
+
+@router.get("/transactions/{id}")
+def read_transaction(
+    id: int,
+    session: str | None = Cookie(default=None)
+):
+
+    user_id = get_current_user(session)
+
+    transaction = get_transaction(
+        id,
+        user_id
+    )
+
+    if not transaction:
+        return {
+            "error": "Transaction not found"
+        }
+
+    return transaction
+
 
 @router.post("/transactions")
-def save_transaction(data: TransactionRequest):
-    current_balance = get_account_balance(data.account_id)
-    if data.type.lower() == "expense" and data.amount > current_balance:
-        return {"error": "Insufficient balance"}
-    new_transaction = Transaction(data.account_id, data.amount, data.type, data.category_id, data.date, data.description)
-    add_transaction(new_transaction)
-    if data.type.lower() == "income":
-        new_balance = current_balance + data.amount
-    else:
-        new_balance = current_balance - data.amount
-    update_balance(data.account_id, new_balance)
-    return {"message": "Transaction created successfully"}
+def save_transaction(
+    data: TransactionRequest,
+    session: str | None = Cookie(default=None)
+):
+
+    user_id = get_current_user(session)
+
+    transaction_type = data.type.capitalize()
+
+    new_transaction = Transaction(
+        data.account_id,
+        data.amount,
+        transaction_type,
+        data.category_id,
+        data.date,
+        data.description
+    )
+
+    created, error = add_transaction(
+        new_transaction,
+        user_id
+    )
+
+    if not created:
+        return {
+            "error": error
+        }
+
+    return {
+        "message": "Transaction created successfully",
+        "id": new_transaction.id
+    }
+
+
+@router.put("/transactions/{id}")
+def edit_transaction(
+    id: int,
+    data: TransactionRequest,
+    session: str | None = Cookie(default=None)
+):
+
+    user_id = get_current_user(session)
+
+    transaction_type = data.type.capitalize()
+
+    updated_transaction = Transaction(
+        data.account_id,
+        data.amount,
+        transaction_type,
+        data.category_id,
+        data.date,
+        data.description,
+        id
+    )
+
+    updated, error = update_transaction(
+        updated_transaction,
+        user_id
+    )
+
+    if not updated:
+        return {
+            "error": error
+        }
+
+    return {
+        "message": "Transaction updated successfully"
+    }
+
 
 @router.delete("/transactions/{id}")
-def remove_transaction(id: int):
-    delete_transaction(id)
+def remove_transaction(
+    id: int,
+    session: str | None = Cookie(default=None)
+):
+
+    user_id = get_current_user(session)
+
+    deleted = delete_transaction(
+        id,
+        user_id
+    )
+
+    if not deleted:
+        return {
+            "error": "Transaction not found"
+        }
+
+    return {
+        "message": "Transaction deleted successfully"
+    }

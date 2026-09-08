@@ -30,7 +30,7 @@ const detailType = document.querySelector("#detail-type")
 const detailCurrency = document.querySelector("#detail-currency")
 const detailBalance = document.querySelector("#detail-balance")
 function loadAccounts() {
-    fetch("http://127.0.0.1:8000/accounts")
+    fetch("http://127.0.0.1:8000/accounts", { credentials: "include" })
         .then(response => response.json())
         .then(data => {
             allAccounts = data;
@@ -94,6 +94,7 @@ addButton.addEventListener("click", function (event) {
     fetch("http://127.0.0.1:8000/accounts", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
+        credentials: "include",
         body: JSON.stringify({name, type, currency, balance})
     })
         .then(response => response.json())
@@ -122,7 +123,8 @@ deleteAccount.addEventListener("click", function (event) {
 deleteAccountConfirmation.addEventListener("click", function (event) {
     event.preventDefault()
     fetch(`http://127.0.0.1:8000/accounts/${selectedAccountId}`, {
-        method: "DELETE"
+        method: "DELETE",
+        credentials: "include"
     })
         .then(response => response.json())
         .then(data => {
@@ -161,6 +163,7 @@ SaveNameButton.addEventListener("click", function (event) {
         headers: {
             "Content-Type": "application/json"
         },
+        credentials: "include",
         body: JSON.stringify({
             name: newName,
             type: detailType.textContent,
@@ -202,6 +205,7 @@ SaveTypeButton.addEventListener("click", function (event) {
         headers: {
             "Content-Type": "application/json"
         },
+        credentials: "include",
         body: JSON.stringify({
             name: detailName.textContent,
             type: newType,
@@ -242,6 +246,7 @@ SaveCurrencyButton.addEventListener("click", function (event) {
         headers: {
             "Content-Type": "application/json"
         },
+        credentials: "include",
         body: JSON.stringify({
             name: detailName.textContent,
             type: detailType.textContent,
@@ -283,6 +288,7 @@ SaveBalanceButton.addEventListener("click", function (event) {
         headers: {
             "Content-Type": "application/json"
         },
+        credentials: "include",
         body: JSON.stringify({
             name: detailName.textContent,
             type: detailType.textContent,
@@ -329,7 +335,7 @@ function CalculateTotalBalance(accounts) {
 /* === RECENT ACCOUNT ACTIVITY === */
 const recentActivityBody = document.querySelector("#recentActivityBody")
 function loadRecentTransactions() {
-    fetch("http://127.0.0.1:8000/transactions")
+    fetch("http://127.0.0.1:8000/transactions", {credentials: "include"})
         .then(response => response.json())
         .then(transactions => {
             recentActivityBody.innerHTML = ""

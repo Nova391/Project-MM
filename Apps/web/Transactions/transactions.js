@@ -47,7 +47,7 @@ function updateCategoryDropdown() {
 
 /* === LOAD CATEGORIES === */
 function loadcategories() {
-    fetch("http://127.0.0.1:8000/categories")
+    fetch("http://127.0.0.1:8000/categories", {credentials: "include"})
         .then(response => response.json())
         .then(data => {
             allCategories = data;
@@ -65,7 +65,7 @@ typeRadios.forEach(radio => {
 /* === GET ACCOUNTS === */
 let allAccounts = [];
 const TransactionAccount = document.querySelector("#account");
-fetch("http://127.0.0.1:8000/accounts")
+fetch("http://127.0.0.1:8000/accounts", {credentials: "include"})
     .then(response => response.json())
     .then(data => {
         allAccounts = data;
@@ -168,7 +168,7 @@ function displayTransactions(transactions) {
 }
 
 function loadtransaction() {
-    fetch("http://127.0.0.1:8000/transactions")
+    fetch("http://127.0.0.1:8000/transactions", {credentials: "include"})
         .then(response => response.json())
         .then(data => {
             allTransactions = data;
@@ -196,6 +196,7 @@ submitTransaction.addEventListener("click", function () {
     fetch("http://127.0.0.1:8000/transactions", {
         method: "POST",
         headers: {"Content-type": "application/json"},
+        credentials: "include",
         body: JSON.stringify(transactionData)
     })
     .then(response => response.json())
@@ -237,6 +238,7 @@ submitCategory.addEventListener("click", function () {
     fetch("http://127.0.0.1:8000/categories", {
         method: "POST",
         headers: {"Content-type": "application/json"},
+        credentials: "include",
         body: JSON.stringify({name, type})
     })
     .then(response => response.json())
@@ -326,7 +328,8 @@ CancelDelete.addEventListener("click", function (event) {
 const Delete = document.querySelector("#Delete")
 Delete.addEventListener("click", function () {
     fetch(`http://127.0.0.1:8000/transactions/${transactionid}`, {
-        method: "DELETE"
+        method: "DELETE",
+        credentials: "include"
     })
 
 })

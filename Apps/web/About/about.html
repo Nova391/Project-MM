@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>About</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About - Project MM</title>
         <link rel="stylesheet" href="../Shared/shared.css">
+        <link rel="stylesheet" href="../About/about.css">
         <script src="https://unpkg.com/lucide@latest"></script>
     </head>
     <body>
@@ -10,6 +13,12 @@
             <div class="sidebarHeader">
                 <button id="menuButton">☰</button>
                 <span class="sidebar-title">Project MM</span>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i data-lucide="user"></i>
+                </div>
+                <span id="currentUsername"></span>
             </div>
             <a href="../Dashboard/dashboard.html">
                 <i data-lucide="house"></i>
@@ -27,11 +36,82 @@
                 <i data-lucide="info"></i>
                 <span class="link-text">About</span>
             </a>
+            <button id="logoutButton" class="logout-button">
+                <i data-lucide="log-out"></i>
+                <span class="link-text">Logout</span>
+            </button>
         </nav>
         <main id="maincontent">
-        <h1>About Project MM</h1>
-        <p>Project MM is my personal money management system, built to help me understand and control my own finances. I created it as both a practical tool for managing my income, expenses, accounts, and goals, and as a programming project where I can build something useful from the ground up. Every part of Project MM is designed around the way I want to manage my money and the way I want the system to grow over time.</p>
-        <footer>This paragraph was written by ChatGPT for Mohamed's Project MM.</footer>
+            <section class="about-header">
+                <p class="about-label">PROJECT MM</p>
+                <h1>About Project MM</h1>
+                <p class="about-intro">
+                    A personal money management system built from the ground up
+                    to make managing money simple, clear, and useful.
+                </p>
+            </section>
+            <section class="about-content">
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i data-lucide="target"></i>
+                    </div>
+                    <h2>The Idea</h2>
+                    <p>
+                        Project MM is my personal money management system,
+                        created to help me understand and control my finances.
+                        It brings accounts, income, expenses, transactions,
+                        and financial goals together in one place.
+                    </p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i data-lucide="code-2"></i>
+                    </div>
+                    <h2>Why I Built It</h2>
+                    <p>
+                        Project MM is more than just a finance application.
+                        It is also a programming project where I can learn
+                        how real software is designed, built, connected,
+                        and improved over time.
+                    </p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i data-lucide="layers-3"></i>
+                    </div>
+                    <h2>How It Works</h2>
+                    <p>
+                        The system connects a web interface with a Python
+                        backend and a SQLite database. The goal is to keep
+                        the structure simple while allowing the system to
+                        grow into something much more powerful.
+                    </p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i data-lucide="rocket"></i>
+                    </div>
+                    <h2>The Future</h2>
+                    <p>
+                        Project MM is designed to grow over time with better
+                        analytics, financial planning, forecasting, and
+                        eventually intelligent features that can help make
+                        better financial decisions.
+                    </p>
+                </div>
+            </section>
+            <section class="about-quote">
+                <i data-lucide="quote"></i>
+                <p>
+                    Built from the ground up by
+                    <strong>Mohamed</strong>,
+                    a programmer who is obviously the best on Earth.
+                </p>        
+                <span>Project MM</span>
+            </section>
+            <footer>
+                Project MM · Built by Mohamed "Al-Muhandes" — The Engineer
+            </footer>
         </main>
         <script src="../Shared/shared.js"></script>
         <script>

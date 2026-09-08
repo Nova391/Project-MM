@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Project MM</title>
+
+    <link rel="stylesheet" href="../Shared/shared.css">
+    <link rel="stylesheet" href="./auth.css">
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <section class="auth-card">
+
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <span>MM</span>
+                </div>
+
+                <h1>Welcome back</h1>
+                <p>Sign in to your Project MM account.</p>
+            </div>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your username"
+                        required
+                        autocomplete="username"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+
+                <p id="loginMessage" class="auth-message"></p>
+
+                <button type="submit" class="auth-button">
+                    Login
+                </button>
+
+            </form>
+
+            <div class="auth-footer">
+                <p>
+                    Don't have an account?
+                    <a href="./register.html">Create one</a>
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="./auth.js"></script>
+
+</body>
+</html>

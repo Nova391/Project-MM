@@ -330,3 +330,272 @@
 { 
     color: rgb(130, 220, 160); 
 }
+
+.quick-actions {
+    display: flex;
+    gap: 14px;
+    margin: 25px 0 35px;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 12px 18px;
+    background: rgb(45, 30, 62);
+    color: rgb(220, 212, 228);
+    border: 1px solid rgba(115, 85, 160, 0.28);
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action-btn svg {
+    width: 17px;
+    height: 17px;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    background-color: rgb(52, 35, 70);
+    border-color: rgba(115, 85, 160, 0.55);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+}
+
+.transaction-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(9, 6, 14, 0.76);
+    backdrop-filter: blur(6px);
+    z-index: 2000;
+}
+
+.transaction-modal.active {
+    display: flex;
+}
+
+.transaction-modal-content {
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+    background: linear-gradient(145deg, rgb(48, 32, 67), rgb(38, 25, 53));
+    border: 1px solid rgba(115, 85, 160, 0.35);
+    border-radius: 18px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
+    animation: modalIn 0.2s ease;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.transaction-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.transaction-modal-header h2 {
+    margin: 0;
+    color: rgb(240, 235, 245);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.transaction-modal-header p {
+    margin: 7px 0 0;
+    color: rgb(145, 135, 160);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.modal-close {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+    background: rgba(115, 85, 160, 0.08);
+    color: rgb(170, 160, 185);
+    border: 1px solid rgba(115, 85, 160, 0.22);
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.modal-close:hover {
+    background: rgba(115, 85, 160, 0.18);
+    color: white;
+    border-color: rgba(115, 85, 160, 0.45);
+}
+
+.modal-close svg {
+    width: 17px;
+    height: 17px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.transaction-modal .form-group {
+    margin-bottom: 18px;
+}
+
+.transaction-modal label {
+    display: block;
+    margin-bottom: 8px;
+    color: rgb(205, 197, 215);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.transaction-modal input,
+.transaction-modal select {
+    width: 100%;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    background: rgb(25, 17, 35);
+    color: rgb(230, 225, 238);
+    border: 1px solid rgb(70, 50, 85);
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.transaction-modal input::placeholder {
+    color: rgb(95, 85, 110);
+}
+
+.transaction-modal input:hover,
+.transaction-modal select:hover {
+    border-color: rgb(88, 65, 110);
+}
+
+.transaction-modal input:focus,
+.transaction-modal select:focus {
+    background: rgb(28, 19, 39);
+    border-color: rgb(115, 85, 160);
+    box-shadow: 0 0 0 3px rgba(115, 85, 160, 0.1);
+}
+
+.transaction-form-message {
+    min-height: 18px;
+    margin: 2px 0 10px;
+    color: rgb(215, 135, 135);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.transaction-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(115, 85, 160, 0.15);
+}
+
+.cancel-button,
+.submit-transaction-button {
+    padding: 11px 18px;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cancel-button {
+    background: transparent;
+    color: rgb(155, 145, 170);
+    border: 1px solid rgb(70, 50, 85);
+}
+
+.cancel-button:hover {
+    background: rgba(115, 85, 160, 0.08);
+    border-color: rgba(115, 85, 160, 0.35);
+}
+
+.submit-transaction-button {
+    background: rgb(90, 65, 110);
+    color: white;
+    border: 1px solid rgba(145, 110, 180, 0.35);
+}
+
+.submit-transaction-button:hover {
+    transform: translateY(-1px);
+    background: rgb(105, 75, 125);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.2);
+}
+
+.submit-transaction-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+@media (max-width: 700px) {
+    .quick-actions {
+        flex-wrap: wrap;
+    }
+
+    .action-btn {
+        flex: 1;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .transaction-modal-content {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 500px) {
+    .quick-actions {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+
+    .transaction-form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .cancel-button,
+    .submit-transaction-button {
+        width: 100%;
+    }
+}
+

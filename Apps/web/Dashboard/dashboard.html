@@ -9,11 +9,16 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-
     <nav class="sidebar">
         <div class="sidebarHeader">
             <button id="menuButton" aria-label="Toggle Navigation">☰</button>
             <span class="sidebar-title">Project MM</span>
+        </div>
+        <div class="user-info">
+            <div class="user-avatar">
+                <i data-lucide="user"></i>
+            </div>
+            <span id="currentUsername"></span>
         </div>
         <a href="../dashboard/dashboard.html" class="active">
             <i data-lucide="house"></i>
@@ -31,15 +36,17 @@
             <i data-lucide="info"></i>
             <span class="link-text">About</span>
         </a>
+        <button id="logoutButton" class="logout-button" type="button">
+            <i data-lucide="log-out"></i>
+            <span class="link-text">Logout</span>
+        </button>
     </nav>
-
     <main id="maincontent">
         <section class="dashboardHeader">
             <h1>Dashboard</h1>
             <h2>Welcome, Sir</h2>
             <p>Here's your financial overview.</p>
         </section>
-        
         <section class="cards">
             <div class="MainCard">
                 <div class="balance-icon">
@@ -48,7 +55,7 @@
                 <h3>Total Balance</h3>
                 <p id="totalBalance">₪0.00</p>
                 <div class="balance-bottom">
-                    <p id="balanceMeta">2 currencies · 5 accounts</p>
+                    <p id="balanceMeta">0 currencies · 0 accounts</p>
                     <div class="SelectCurrency">
                         <select id="balanceCurrency">
                             <option value="ILS">ILS</option>
@@ -69,38 +76,159 @@
             </div>
         </section>
         <section class="quick-actions">
-            <button class="action-btn"><i data-lucide="plus"></i> Add Income</button>
-            <button class="action-btn"><i data-lucide="minus"></i> Add Expense</button>
-            <button class="action-btn"><i data-lucide="send"></i> Transfer</button>
+            <button class="action-btn" id="addIncomeButton" type="button">
+                <i data-lucide="plus"></i>
+                Add Income
+            </button>
+            <button class="action-btn" id="addExpenseButton" type="button">
+                <i data-lucide="minus"></i>
+                Add Expense
+            </button>
+            <button class="action-btn" id="transferButton" type="button">
+                <i data-lucide="send"></i>
+                Transfer
+            </button>
         </section>
-
         <section class="recent-transactions">
             <div class="section-header">
                 <h3>Recent Activity</h3>
                 <a href="../Transactions/transactions.html" class="view-all">View All</a>
             </div>
-            <div class="transaction-list">
-                <div class="transaction-item">
-                    <div class="tx-icon expense"><i data-lucide="shopping-cart"></i></div>
-                    <div class="tx-details">
-                        <h4>Groceries</h4>
-                        <p>Today, 2:30 PM</p>
-                    </div>
-                    <div class="tx-amount negative">-₪350.00</div>
-                </div>
-                <div class="transaction-item">
-                    <div class="tx-icon income"><i data-lucide="briefcase"></i></div>
-                    <div class="tx-details">
-                        <h4>Salary</h4>
-                        <p>Yesterday</p>
-                    </div>
-                    <div class="tx-amount positive">+₪8,500.00</div>
-                </div>
-            </div>
+            <div class="transaction-list" id="recentTransactionList"></div>
         </section>
         <footer>Money Manager</footer>
     </main>
 
+    <div class="transaction-modal" id="incomeModal">
+        <div class="transaction-modal-content">
+            <div class="transaction-modal-header">
+                <div>
+                    <h2>Add Income</h2>
+                    <p>Record money received into one of your accounts.</p>
+                </div>
+                <button type="button" class="modal-close" id="closeIncomeModal" aria-label="Close">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <form id="incomeForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="incomeAmount">Amount</label>
+                        <input type="number" id="incomeAmount" min="0.01" step="0.01" placeholder="0.00" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="incomeAccount">Account</label>
+                        <select id="incomeAccount" required></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="incomeCategory">Category</label>
+                    <select id="incomeCategory" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="incomeDate">Date</label>
+                    <input type="date" id="incomeDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="incomeDescription">Description</label>
+                    <input type="text" id="incomeDescription" maxlength="200" placeholder="Optional">
+                </div>
+                <p id="incomeMessage" class="transaction-form-message"></p>
+                <div class="transaction-form-actions">
+                    <button type="button" class="cancel-button" id="cancelIncome">Cancel</button>
+                    <button type="submit" class="submit-transaction-button">Add Income</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="transaction-modal" id="expenseModal">
+        <div class="transaction-modal-content">
+            <div class="transaction-modal-header">
+                <div>
+                    <h2>Add Expense</h2>
+                    <p>Record money spent from one of your accounts.</p>
+                </div>
+                <button type="button" class="modal-close" id="closeExpenseModal" aria-label="Close">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <form id="expenseForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expenseAmount">Amount</label>
+                        <input type="number" id="expenseAmount" min="0.01" step="0.01" placeholder="0.00" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expenseAccount">Account</label>
+                        <select id="expenseAccount" required></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="expenseCategory">Category</label>
+                    <select id="expenseCategory" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="expenseDate">Date</label>
+                    <input type="date" id="expenseDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="expenseDescription">Description</label>
+                    <input type="text" id="expenseDescription" maxlength="200" placeholder="Optional">
+                </div>
+                <p id="expenseMessage" class="transaction-form-message"></p>
+                <div class="transaction-form-actions">
+                    <button type="button" class="cancel-button" id="cancelExpense">Cancel</button>
+                    <button type="submit" class="submit-transaction-button">Add Expense</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="transaction-modal" id="transferModal">
+        <div class="transaction-modal-content">
+            <div class="transaction-modal-header">
+                <div>
+                    <h2>Transfer Money</h2>
+                    <p>Move money from one account to another.</p>
+                </div>
+                <button type="button" class="modal-close" id="closeTransferModal" aria-label="Close">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <form id="transferForm">
+                <div class="form-group">
+                    <label for="transferFrom">From Account</label>
+                    <select id="transferFrom" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="transferTo">To Account</label>
+                    <select id="transferTo" required></select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="transferAmount">Amount</label>
+                        <input type="number" id="transferAmount" min="0.01" step="0.01" placeholder="0.00" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="transferDate">Date</label>
+                        <input type="date" id="transferDate" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="transferDescription">Description</label>
+                    <input type="text" id="transferDescription" maxlength="200" placeholder="Optional">
+                </div>
+                <p id="transferMessage" class="transaction-form-message"></p>
+                <div class="transaction-form-actions">
+                    <button type="button" class="cancel-button" id="cancelTransfer">Cancel</button>
+                    <button type="submit" class="submit-transaction-button">Transfer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../Shared/auth-guard.js"></script>
     <script src="../Shared/shared.js"></script>
     <script src="../Dashboard/dashboard.js"></script>
     <script>

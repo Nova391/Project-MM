@@ -1,0 +1,125 @@
+/* === ABOUT PAGE === */
+#maincontent {
+    max-width: 1100px;
+    padding: 60px 50px;
+}
+
+/* === HEADER === */
+.about-header {
+    margin-bottom: 45px;
+    max-width: 800px;
+}
+.about-label {
+    color: rgb(150, 120, 180);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+.about-header h1 {
+    margin: 0 0 15px;
+    font-size: 42px;
+    color: white;
+}
+.about-intro {
+    margin: 0;
+    color: rgb(180, 165, 195);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* === CONTENT === */
+.about-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.about-card {
+    background-color: rgb(32, 22, 43);
+    border: 1px solid rgb(55, 40, 67);
+    border-radius: 16px;
+    padding: 28px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.about-card:hover {
+    transform: translateY(-4px);
+    border-color: rgb(90, 65, 110);
+}
+.about-card-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(90, 65, 110);
+    border-radius: 11px;
+    margin-bottom: 20px;
+}
+.about-card-icon svg {
+    width: 21px;
+    height: 21px;
+    color: white;
+}
+.about-card h2 {
+    margin: 0 0 12px;
+    color: white;
+    font-size: 21px;
+}
+.about-card p {
+    margin: 0;
+    color: rgb(175, 160, 190);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* === QUOTE === */
+.about-quote {
+    margin-top: 45px;
+    padding: 35px;
+    text-align: center;
+    background-color: rgb(35, 20, 50);
+    border: 1px solid rgb(55, 40, 67);
+    border-radius: 16px;
+}
+.about-quote svg {
+    width: 26px;
+    height: 26px;
+    color: rgb(150, 120, 180);
+    margin-bottom: 15px;
+}
+.about-quote p {
+    margin: 0 0 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+.about-quote span {
+    color: rgb(145, 125, 160);
+    font-size: 14px;
+}
+
+/* === FOOTER === */
+footer {
+    margin-top: 45px;
+    text-align: center;
+    color: rgb(110, 95, 125);
+    font-size: 13px;
+}
+
+/* === EXPANDED SIDEBAR === */
+.sidebar.hidden ~ #maincontent {
+    margin-left: 250px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 700px) {
+    #maincontent {
+        padding: 40px 25px;
+    }
+    .about-header h1 {
+        font-size: 32px;
+    }
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+}

@@ -15,7 +15,12 @@
                 <button id="menuButton" aria-label="Toggle Navigation Menu">☰</button>
                 <span class="sidebar-title">Project MM</span>
             </div>
-    
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i data-lucide="user"></i>
+                </div>
+                <span id="currentUsername"></span>
+            </div>
             <a href="../dashboard/dashboard.html">
                 <i data-lucide="house"></i>
                 <span class="link-text">Dashboard</span>
@@ -32,6 +37,10 @@
                 <i data-lucide="info"></i>
                 <span class="link-text">About</span>
             </a>
+            <button id="logoutButton" class="logout-button">
+                <i data-lucide="log-out"></i>
+                <span class="link-text">Logout</span>
+            </button>
         </nav>
 
         <main id="maincontent">
@@ -217,6 +226,9 @@
         </main>
         <script src="../Shared/shared.js"></script>
         <script src="../Accounts/accounts.js"></script>
+        <script src="../Shared/auth-guard.js"></script>
+        <script src="../Shared/shared.js"></script>
+        <script src="../Dashboard/dashboard.js"></script>
         <script>
             lucide.createIcons();
         </script>
